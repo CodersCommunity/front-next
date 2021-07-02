@@ -12,7 +12,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['~/assets/scss/index.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -24,6 +24,9 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+
+    // https://www.npmjs.com/package/@nuxtjs/style-resources
+    '@nuxtjs/style-resources',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -37,6 +40,10 @@ export default {
     manifest: {
       lang: 'en',
     },
+  },
+
+  styleResources: {
+    scss: ['~/assets/scss/vars.scss', '~/assets/scss/mixins.scss'],
   },
 
   // env configuration: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-env
