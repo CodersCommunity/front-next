@@ -1,3 +1,5 @@
 <template>
-  <aside>sidebar</aside>
+  <aside>
+    <SidebarStats />
+  </aside>
 </template>
