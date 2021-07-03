@@ -1,0 +1,11 @@
+@use 'sass:math';
+
+@function size($target) {
+  @return math.div($target, 16) * 1em;
+}
+
+@mixin mobile {
+  @media (max-width: size(1024)) {
+    @content;
+  }
+}
