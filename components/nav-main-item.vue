@@ -1,6 +1,11 @@
 <template>
   <li class="list-item">
-    <router-link class="link" :to="linkTo">
+    <router-link
+      class="link"
+      :to="linkTo"
+      :exact="exact"
+      @click.native="(e) => e.currentTarget.blur()"
+    >
       <img class="icon" :src="icon" width="48" height="48" alt="" />
       <span class="link-text" v-text="text" />
     </router-link>
@@ -22,6 +27,10 @@ export default Vue.extend({
     linkTo: {
       type: String,
       required: true,
+    },
+    exact: {
+      type: Boolean,
+      default: false,
     },
   },
 })

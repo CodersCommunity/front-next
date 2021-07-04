@@ -5,6 +5,7 @@
         link-to="/"
         text="Najnowsze pytania"
         icon="/images/logo.png"
+        exact
       />
       <NavMainItem
         link-to="/ostatnia-aktywnosc"
