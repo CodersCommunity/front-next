@@ -34,10 +34,10 @@ export default Vue.extend({
   },
   async fetch() {
     const stats = await httpService.statistics.getStatistics()
-    this.questionsCount = stats.data.questionsCount
-    this.answersCount = stats.data.answersCount
-    this.commentsCount = stats.data.commentsCount
-    this.usersCount = stats.data.usersCount
+    this.questionsCount = stats.questionsCount
+    this.answersCount = stats.answersCount
+    this.commentsCount = stats.commentsCount
+    this.usersCount = stats.usersCount
   },
 })
 </script>
