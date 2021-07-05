@@ -8,6 +8,11 @@
         exact
       />
       <NavMainItem
+        link-to="/kategorie"
+        text="Kategorie"
+        icon="https://img.icons8.com/color/48/000000/flow-chart.png"
+      />
+      <!-- <NavMainItem
         link-to="/ostatnia-aktywnosc"
         text="Ostatnia aktywność"
         icon="https://img.icons8.com/color/48/000000/calendar--v1.png"
@@ -21,7 +26,7 @@
         link-to="/zadaj-pytanie"
         text="Zadaj pytanie"
         icon="https://img.icons8.com/color/48/000000/ask-question.png"
-      />
+      /> -->
     </ul>
   </nav>
 </template>
