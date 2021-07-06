@@ -5,21 +5,15 @@
     </TitleContainer>
 
     <Box>
-      <Categories :categories="categories" />
+      <Categories :categories="$store.state.categories" />
     </Box>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { httpService } from '~/services/http.service'
 
 export default Vue.extend({
   layout: 'sidebar',
-  async asyncData() {
-    return {
-      categories: await httpService.categories.getCategoriesList(),
-    }
-  },
 })
 </script>
