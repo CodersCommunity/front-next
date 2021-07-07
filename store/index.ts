@@ -1,7 +1,12 @@
 import { MutationTree, ActionTree } from 'vuex'
 import { getAccessorType } from 'typed-vuex'
-import { CategoryDto, StatisticsDto } from '~/services/__generated-api'
+import { Context as NuxtContext } from '@nuxt/types'
 import { httpService } from '~/services/http.service'
+import {
+  AccountDto,
+  CategoryDto,
+  StatisticsDto,
+} from '~/services/__generated-api'
 
 // Import all your submodules
 // import * as submodule from '~/store/submodule'
@@ -9,6 +14,7 @@ import { httpService } from '~/services/http.service'
 export const state = () => ({
   categories: [] as CategoryDto[],
   statistics: null as StatisticsDto | null,
+  currentUser: null as AccountDto | null,
 })
 
 export type RootState = ReturnType<typeof state>
@@ -16,6 +22,7 @@ export type RootState = ReturnType<typeof state>
 export enum mutationTypes {
   SetCategories = 'setCategories',
   SetStatistics = 'setStatistics',
+  SetCurrentUser = 'setCurrentUser',
 }
 
 export const mutations: MutationTree<RootState> = {
@@ -25,17 +32,29 @@ export const mutations: MutationTree<RootState> = {
   [mutationTypes.SetStatistics](state, statistics: StatisticsDto) {
     state.statistics = statistics
   },
+  [mutationTypes.SetCurrentUser](state, user: AccountDto) {
+    state.currentUser = user
+  },
 }
 
 export const actions: ActionTree<RootState, RootState> = {
-  async nuxtServerInit({ commit }) {
-    const [categories, statistics] = await Promise.all([
+  async nuxtServerInit({ commit }, { req }: NuxtContext) {
+    const [categories, statistics, user] = await Promise.all([
       httpService.categories.getCategoriesList(),
       httpService.statistics.getStatistics(),
+      httpService.account
+        .getAccountData({
+          headers: { cookie: req.headers.cookie },
+        })
+        .catch((err) => {
+          if (err.response?.status === 401) return null
+          throw err
+        }),
     ])
 
     commit(mutationTypes.SetCategories, categories)
     commit(mutationTypes.SetStatistics, statistics)
+    commit(mutationTypes.SetCurrentUser, user)
   },
 }
 
