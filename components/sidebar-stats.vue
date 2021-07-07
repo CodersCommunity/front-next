@@ -1,35 +1,23 @@
 <template>
-  <div v-if="statistics" class="stats">
+  <div class="stats">
     <div class="box box--questions">
-      <div class="number" v-text="statistics.questionsCount" />
+      <div class="number" v-text="$accessor.statistics.questionsCount" />
       zapytań
     </div>
     <div class="box box--answers">
-      <div class="number" v-text="statistics.answersCount" />
+      <div class="number" v-text="$accessor.statistics.answersCount" />
       odpowiedzi
     </div>
     <div class="box box--comments">
-      <div class="number" v-text="statistics.commentsCount" />
+      <div class="number" v-text="$accessor.statistics.commentsCount" />
       komentarzy
     </div>
     <div class="box box--users">
-      <div class="number" v-text="statistics.usersCount" />
+      <div class="number" v-text="$accessor.statistics.usersCount" />
       pasjonatów
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  computed: {
-    statistics() {
-      return this.$accessor.statistics
-    },
-  },
-})
-</script>
 
 <style lang="scss" scoped>
 .stats {
