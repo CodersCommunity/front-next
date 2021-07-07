@@ -10,6 +10,15 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  head: {
+    titleTemplate: '%s - Forum Pasja Informatyki',
+  },
+})
+</script>
+
 <style lang="scss" scoped>
 .layout-container {
   display: flex;

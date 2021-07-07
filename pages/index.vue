@@ -9,5 +9,8 @@ import Vue from 'vue'
 
 export default Vue.extend({
   layout: 'sidebar',
+  head: {
+    title: 'Najnowsze pytania',
+  },
 })
 </script>
