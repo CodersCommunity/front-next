@@ -24,7 +24,7 @@ export default Vue.extend({
     },
   },
   computed: {
-    classes() {
+    classes(): Object {
       return {
         'title-container--main-title': this.type === ContainerType.MainTitle,
         'title-container--answers': this.type === ContainerType.Answers,

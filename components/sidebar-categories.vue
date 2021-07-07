@@ -2,7 +2,7 @@
   <div class="categories">
     <h2 class="title">Kategorie Pytań</h2>
     <ul>
-      <li v-for="category in categories" :key="category.ui" class="item">
+      <li v-for="category in categories" :key="category.id" class="item">
         {{ category.title }}
       </li>
     </ul>

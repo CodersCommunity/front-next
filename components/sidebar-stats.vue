@@ -1,5 +1,5 @@
 <template>
-  <div class="stats">
+  <div v-if="$accessor.statistics" class="stats">
     <div class="box box--questions">
       <div class="number" v-text="$accessor.statistics.questionsCount" />
       zapytań
