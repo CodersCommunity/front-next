@@ -1,19 +1,19 @@
 <template>
-  <div class="stats">
+  <div v-if="statistics" class="stats">
     <div class="box box--questions">
-      <div class="number" v-text="questionsCount" />
+      <div class="number" v-text="statistics.questionsCount" />
       zapytań
     </div>
     <div class="box box--answers">
-      <div class="number" v-text="answersCount" />
+      <div class="number" v-text="statistics.answersCount" />
       odpowiedzi
     </div>
     <div class="box box--comments">
-      <div class="number" v-text="commentsCount" />
+      <div class="number" v-text="statistics.commentsCount" />
       komentarzy
     </div>
     <div class="box box--users">
-      <div class="number" v-text="usersCount" />
+      <div class="number" v-text="statistics.usersCount" />
       pasjonatów
     </div>
   </div>
@@ -21,23 +21,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { httpService } from '~/services/http.service'
 
 export default Vue.extend({
-  data() {
-    return {
-      questionsCount: 0,
-      answersCount: 0,
-      commentsCount: 0,
-      usersCount: 0,
-    }
-  },
-  async fetch() {
-    const stats = await httpService.statistics.getStatistics()
-    this.questionsCount = stats.questionsCount
-    this.answersCount = stats.answersCount
-    this.commentsCount = stats.commentsCount
-    this.usersCount = stats.usersCount
+  computed: {
+    statistics() {
+      return this.$accessor.statistics
+    },
   },
 })
 </script>
