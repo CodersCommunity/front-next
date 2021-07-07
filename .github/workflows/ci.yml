@@ -40,6 +40,11 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
+      - name: Generate rest api
+        run: npm run generate-api
+        env:
+          OPEN_API_SCHEMA_URL: https://raw.githubusercontent.com/awaluk/q2a-api/dev/docs/api.yaml
+
       - name: Run linter 👀
         run: npm run lint
 
