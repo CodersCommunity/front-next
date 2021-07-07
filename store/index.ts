@@ -1,6 +1,10 @@
 import { MutationTree, ActionTree } from 'vuex'
+import { getAccessorType } from 'typed-vuex'
 import { CategoryDto } from '~/services/__generated-api'
 import { httpService } from '~/services/http.service'
+
+// Import all your submodules
+// import * as submodule from '~/store/submodule'
 
 export const state = () => ({
   categories: [] as CategoryDto[],
@@ -26,3 +30,14 @@ export const actions: ActionTree<RootState, RootState> = {
     )
   },
 }
+
+export const accessorType = getAccessorType({
+  state,
+  // getters,
+  mutations,
+  actions,
+  modules: {
+    // The key (submodule) needs to match the Nuxt namespace (e.g. ~/store/submodule.ts)
+    // submodule,
+  },
+})
