@@ -21,7 +21,7 @@ export default {
   css: ['~/assets/scss/index.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/services/http.service.ts'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -46,6 +46,9 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+
+    // https://www.npmjs.com/package/cookie-universal-nuxt
+    'cookie-universal-nuxt',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -66,4 +69,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-servermiddleware
+  serverMiddleware: [
+    { path: '/api', handler: '~/server-middleware/api.middleware.ts' },
+  ],
 }
