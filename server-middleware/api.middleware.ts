@@ -18,9 +18,7 @@ const serverMiddleware: ServerMiddleware = async function (req, res) {
     url: `${API_URL}${req.url}`,
     method: req.method as Method,
     headers: {
-      cookie: decodeURIComponent(
-        (req.headers[Q2A_COOKIE_HEADER] as string) || ''
-      ),
+      cookie: (req.headers[Q2A_COOKIE_HEADER] as string) || '',
     },
   }).catch((err) => {
     if (err.response) {
