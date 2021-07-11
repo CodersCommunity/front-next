@@ -44,8 +44,10 @@ const httpServicePlugin: Plugin = ({ app }, inject) => {
   httpService.instance.interceptors.response.use((res) => {
     if (!res.headers[SET_Q2A_COOKIE_HEADER]) return res
 
-    const currentQ2aCookies = cookie.parse(app.$cookies.get(Q2A_COOKIE_HEADER))
-    const newQ2aCookies = cookie.parse(res.headers[SET_Q2A_COOKIE_HEADER])
+    const currentQ2aCookies = cookie.parse(
+      app.$cookies.get(Q2A_COOKIE_HEADER) || ''
+    )
+    const newQ2aCookies = cookie.parse(res.headers[SET_Q2A_COOKIE_HEADER] || '')
     const combinedCookies = { ...currentQ2aCookies, ...newQ2aCookies }
     const cookieString = Object.entries(combinedCookies)
       .map(([name, value]) => `${name}=${value}`)
