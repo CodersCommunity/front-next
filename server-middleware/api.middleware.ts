@@ -13,31 +13,39 @@ export function stringifySetCookieHeader(setCookie: string[] = []): string {
   return cookies.join('; ')
 }
 
-const serverMiddleware: ServerMiddleware = async function (req, res) {
-  const axiosResponse = await axios({
-    url: `${API_URL}${req.url}`,
-    method: req.method as Method,
-    headers: {
-      cookie: (req.headers[Q2A_COOKIE_HEADER] as string) || '',
-    },
-  }).catch((err) => {
-    if (err.response) {
-      return err.response as AxiosResponse
-    }
-
-    throw err
+const serverMiddleware: ServerMiddleware = function (req, res) {
+  let payload = ''
+  req.on('data', (chunk) => {
+    payload += chunk.toString()
   })
 
-  const responseCookieHeader = stringifySetCookieHeader(
-    axiosResponse.headers['set-cookie']
-  )
+  req.on('end', async () => {
+    const axiosResponse = await axios({
+      url: `${API_URL}${req.url}`,
+      method: req.method as Method,
+      data: payload.length > 0 ? JSON.parse(payload) : null,
+      headers: {
+        cookie: (req.headers[Q2A_COOKIE_HEADER] as string) || '',
+      },
+    }).catch((err) => {
+      if (err.response) {
+        return err.response as AxiosResponse
+      }
 
-  if (responseCookieHeader) {
-    res.setHeader(SET_Q2A_COOKIE_HEADER, responseCookieHeader)
-  }
+      throw err
+    })
 
-  res.statusCode = axiosResponse.status
-  res.end(JSON.stringify(axiosResponse.data))
+    const responseCookieHeader = stringifySetCookieHeader(
+      axiosResponse.headers['set-cookie']
+    )
+
+    if (responseCookieHeader) {
+      res.setHeader(SET_Q2A_COOKIE_HEADER, responseCookieHeader)
+    }
+
+    res.statusCode = axiosResponse.status
+    res.end(JSON.stringify(axiosResponse.data))
+  })
 }
 
 export default serverMiddleware
