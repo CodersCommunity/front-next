@@ -25,6 +25,7 @@
   flex-wrap: wrap;
   text-align: center;
   margin-bottom: $gap-width;
+  border: 1px solid var(--box--border-color);
 
   @include mobile {
     display: none;

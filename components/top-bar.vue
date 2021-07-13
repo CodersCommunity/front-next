@@ -11,7 +11,7 @@
 .top-bar {
   position: relative;
   background-color: var(--top-bar--background-color);
-  border-bottom: 1px solid var(--nav-main--item-hover--background-color);
+  border-bottom: 1px solid var(--top-bar--border-color);
 }
 
 .user {

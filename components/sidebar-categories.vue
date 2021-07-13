@@ -40,6 +40,8 @@ export default Vue.extend({
   background-color: var(--sidebar--categories--background-color);
   color: var(--sidebar--categories--text-color);
   padding: size(8);
+  margin-bottom: $gap-width;
+  border: 1px solid var(--box--border-color);
 }
 
 .title {

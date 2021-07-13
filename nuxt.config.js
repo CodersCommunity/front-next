@@ -40,6 +40,9 @@ export default {
 
     // https://typed-vuex.roe.dev/
     'nuxt-typed-vuex',
+
+    // https://color-mode.nuxtjs.org/
+    '@nuxtjs/color-mode',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
