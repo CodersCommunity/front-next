@@ -31,7 +31,7 @@ export const mutations: MutationTree<RootState> = {
   [MutationTypes.SetStatistics](state, statistics: StatisticsDto) {
     state.statistics = statistics
   },
-  [MutationTypes.SetCurrentUser](state, user: AccountDto) {
+  [MutationTypes.SetCurrentUser](state, user: AccountDto | null) {
     state.currentUser = user
   },
 }
@@ -50,6 +50,10 @@ export const actions: ActionTree<RootState, RootState> = {
     commit(MutationTypes.SetCategories, categories)
     commit(MutationTypes.SetStatistics, statistics)
     commit(MutationTypes.SetCurrentUser, user)
+  },
+  logout({ commit }) {
+    commit(MutationTypes.SetCurrentUser, null)
+    this.app.$cookies.remove('q2a-cookie')
   },
 }
 

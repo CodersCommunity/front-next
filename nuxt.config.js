@@ -21,7 +21,7 @@ export default {
   css: ['~/assets/scss/index.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/services/http.service.ts'],
+  plugins: ['~/plugins/vee-validate.ts', '~/services/http.service.ts'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -68,7 +68,9 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ['vee-validate/dist/rules'],
+  },
 
   // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-servermiddleware
   serverMiddleware: [
