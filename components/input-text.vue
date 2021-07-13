@@ -115,11 +115,18 @@ export default Vue.extend({
   margin: 5px 0 2px;
   padding: 10px;
   border-radius: none;
-  border: 1px solid grey;
+  color: var(--form--input--text-color);
+  border: 1px solid var(--form--input--border-color);
+  background-color: var(--form--input--background-color);
+  outline: none;
+
+  &:focus {
+    border-color: var(--form--outline-color);
+  }
 }
 
 .error-message {
   font-size: 14px;
-  color: red;
+  color: var(--form--error--text-color);
 }
 </style>

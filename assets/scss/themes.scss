@@ -24,6 +24,12 @@
   --title-container--main-title--background-color: #3498db;
   --title-container--answers--background-color: #2ecc71;
   --title-container--similar-questions--background-color: #9b59b6;
+
+  --form--error--text-color: #ff0000;
+  --form--input--text-color: #3a3a3a;
+  --form--input--background-color: #f5f7f7;
+  --form--input--border-color: #cccccc;
+  --form--outline-color: #051825;
 }
 
 .dark-mode:root {
@@ -52,4 +58,10 @@
   --title-container--main-title--background-color: #181a1f;
   --title-container--answers--background-color: #2ecc71;
   --title-container--similar-questions--background-color: #9b59b6;
+
+  --form--error--text-color: #ebcd29;
+  --form--input--text-color: #d4d4d4;
+  --form--input--background-color: #1f2229;
+  --form--input--border-color: #181a1f;
+  --form--outline-color: #ffffff;
 }
