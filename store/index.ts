@@ -51,10 +51,6 @@ export const actions: ActionTree<RootState, RootState> = {
     commit(MutationTypes.SetStatistics, statistics)
     commit(MutationTypes.SetCurrentUser, user)
   },
-  logout({ commit }) {
-    commit(MutationTypes.SetCurrentUser, null)
-    this.app.$cookies.remove('q2a-cookie')
-  },
 }
 
 export const accessorType = getAccessorType({
