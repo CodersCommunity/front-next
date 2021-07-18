@@ -8,6 +8,11 @@
         exact
       />
       <NavMainItem
+        link-to="/pytania"
+        text="Pytania"
+        icon="https://img.icons8.com/color/48/000000/ask-question.png"
+      />
+      <NavMainItem
         link-to="/kategorie"
         text="Kategorie"
         icon="https://img.icons8.com/color/48/000000/flow-chart.png"

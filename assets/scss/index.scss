@@ -5,6 +5,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: var(--body--text-color);
   background-color: var(--body--background-color);
+  overflow-y: scroll;
 }
 
 *,
