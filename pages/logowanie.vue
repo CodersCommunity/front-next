@@ -32,7 +32,7 @@
           <br />
           <br />
 
-          <Button type="submit">Zaloguj</Button>
+          <Custom-Button type="submit">Zaloguj</Custom-Button>
         </form>
       </ValidationObserver>
     </Box>
