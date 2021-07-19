@@ -1,7 +1,7 @@
 @use 'sass:math';
 
 @function size($target) {
-  @return math.div($target, 16) * 1em;
+  @return math.div($target, 16) * 1rem;
 }
 
 @mixin mobile {
