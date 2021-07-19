@@ -1,0 +1,39 @@
+.VuePagination {
+  &__pagination {
+    display: flex;
+    padding: 0;
+    margin: $gap-width 0;
+  }
+
+  &__pagination-item {
+    display: block;
+    width: size(32);
+    height: size(32);
+    line-height: size(30);
+
+    margin: 1px;
+    text-align: center;
+    cursor: pointer;
+
+    transition: background-color 0.15s, color 0.15s;
+
+    border: 1px solid var(--pagination--button--border-color);
+    background-color: var(--pagination--button--background-color);
+    color: var(--pagination--button--text-color);
+
+    &:hover,
+    &:focus {
+      background-color: var(--pagination--button--hover--background-color);
+      color: var(--pagination--button--hover--text-color);
+    }
+
+    &.active {
+      background-color: var(--pagination--button--active--background-color);
+      color: var(--pagination--button--active--text-color);
+    }
+  }
+
+  &__count {
+    display: none;
+  }
+}

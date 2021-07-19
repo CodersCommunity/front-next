@@ -42,6 +42,14 @@
   --button--warning--hover--background-color: #db761d;
   --button--error--background-color: #e74c3c;
   --button--error--hover--background-color: #d13f2f;
+
+  --pagination--button--border-color: #ffffff;
+  --pagination--button--background-color: #ffffff;
+  --pagination--button--text-color: #34495e;
+  --pagination--button--hover--background-color: #e67e22;
+  --pagination--button--hover--text-color: #ffffff;
+  --pagination--button--active--background-color: #3498db;
+  --pagination--button--active--text-color: #ffffff;
 }
 
 .dark-mode:root {
@@ -88,4 +96,12 @@
   --button--warning--hover--background-color: #e67e22;
   --button--error--background-color: #181a1f;
   --button--error--hover--background-color: #d64232;
+
+  --pagination--button--border-color: #181a1f;
+  --pagination--button--background-color: #282c34;
+  --pagination--button--text-color: #d2d2d2;
+  --pagination--button--hover--background-color: #e67e22;
+  --pagination--button--hover--text-color: #ffffff;
+  --pagination--button--active--background-color: #3498db;
+  --pagination--button--active--text-color: #ffffff;
 }

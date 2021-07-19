@@ -5,6 +5,13 @@
       <NavQuestions />
     </TitleContainer>
 
+    <Pagination
+      v-if="pagination"
+      v-model="page"
+      :records="pagination.itemsCount"
+      :per-page="pagination.perPage"
+    />
+
     <Box v-for="question in questions" :key="question.id">
       <h2>{{ question.title }}</h2>
       <p>
@@ -18,6 +25,13 @@
         <li>Głosów: {{ question.votes }}</li>
       </ul>
     </Box>
+
+    <Pagination
+      v-if="pagination"
+      v-model="page"
+      :records="pagination.itemsCount"
+      :per-page="pagination.perPage"
+    />
   </div>
 </template>
 
@@ -31,6 +45,7 @@ export default Vue.extend({
     return {
       questions: [] as QuestionListDto[],
       pagination: null as PaginationDto | null,
+      page: 1,
     }
   },
   async fetch() {
@@ -47,14 +62,14 @@ export default Vue.extend({
       sort = 'najnowsze'
     }
 
-    let page = parseInt(this.$route.query.strona as string)
-    if (Number.isNaN(page) || page < 1) {
-      page = 1
+    this.page = parseInt(this.$route.query.strona as string)
+    if (Number.isNaN(this.page) || this.page < 1) {
+      this.page = 1
     }
 
     const { data: questions, pagination } =
       await this.$httpService.questions.getQuestionsList({
-        page,
+        page: this.page,
         // TODO
         // @ts-ignore
         sort: sortMap[sort],
@@ -66,9 +81,21 @@ export default Vue.extend({
   head: {
     title: 'Pytania',
     // TODO next - prev links
+    // TODO canonical links on first pages
   },
   watch: {
+    // TODO show loader
     '$route.query': '$fetch',
+    '$route.query.strona'(page) {
+      if (page) {
+        window.scrollTo({ top: 0 })
+      }
+    },
+    page(page) {
+      if (page === 1 && !this.$route.query.strona) return
+      const query = { ...this.$route.query, strona: page }
+      this.$router.push({ query })
+    },
   },
 })
 </script>
