@@ -50,6 +50,17 @@
   --pagination--button--hover--text-color: #ffffff;
   --pagination--button--active--background-color: #3498db;
   --pagination--button--active--text-color: #ffffff;
+
+  --question--votes--text-color: #445f7a;
+  --question--votes--background-color: #ecf0f1;
+  --question--answers-number--text-color: #ecf0f1;
+  --question--answers-number--background-color: #3498db;
+  --question--answers-number--no-answers--background-color: #d13f2f;
+  --question--answers-number--with-best-answer--background-color: #27ae60;
+  --question--title--text-color: #3498db;
+
+  --tag--text-color: #ffffff;
+  --tag--background-color: #e67e22;
 }
 
 .dark-mode:root {
@@ -104,4 +115,15 @@
   --pagination--button--hover--text-color: #ffffff;
   --pagination--button--active--background-color: #3498db;
   --pagination--button--active--text-color: #ffffff;
+
+  --question--votes--text-color: #b9b9b9;
+  --question--votes--background-color: #3a404b;
+  --question--answers-number--text-color: #ecf0f1;
+  --question--answers-number--background-color: #3498db;
+  --question--answers-number--no-answers--background-color: #d13f2f;
+  --question--answers-number--with-best-answer--background-color: #27ae60;
+  --question--title--text-color: #4aa3df;
+
+  --tag--text-color: #b9b9b9;
+  --tag--background-color: #21252b;
 }

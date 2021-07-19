@@ -12,19 +12,11 @@
       :per-page="pagination.perPage"
     />
 
-    <Box v-for="question in questions" :key="question.id">
-      <h2>{{ question.title }}</h2>
-      <p>
-        Pytanie zadane <b>{{ question.change.date }}</b> przez
-        <b>{{ question.change.user.name }}</b> w kategorii
-        <b>{{ question.category.title }}</b>
-      </p>
-
-      <ul>
-        <li>Odwiedzin: {{ question.views }}</li>
-        <li>Głosów: {{ question.votes }}</li>
-      </ul>
-    </Box>
+    <InlineQuestion
+      v-for="question in questions"
+      :key="question.id"
+      :question="question"
+    />
 
     <Pagination
       v-if="pagination"
