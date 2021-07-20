@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="theme-wrapper">
     <span class="label">Motyw:</span>
     <div class="buttons-wrapper">
       <button class="button" @click="$colorMode.preference = 'light'">
@@ -13,13 +13,13 @@
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+.theme-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   background: var(--box--background-color);
-  padding: size(12);
+  padding: size(14);
   border: 1px solid var(--box--border-color);
 }
 
@@ -36,7 +36,7 @@
   width: size(80);
   height: size(40);
   border-radius: 0;
-  border: 0 none;
+  border: none;
 }
 
 .dark {
