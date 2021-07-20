@@ -8,12 +8,12 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { QuestionListDto } from '~/services/__generated-api'
+import { InlineQuestionDto } from '~/services/__generated-api'
 
 export default Vue.extend({
   props: {
     questions: {
-      type: Array as PropType<QuestionListDto[]>,
+      type: Array as PropType<InlineQuestionDto[]>,
       required: true,
     },
   },
