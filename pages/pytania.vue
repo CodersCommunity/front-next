@@ -5,18 +5,7 @@
       <NavQuestions />
     </TitleContainer>
 
-    <Pagination
-      v-if="pagination"
-      v-model="page"
-      :records="pagination.itemsCount"
-      :per-page="pagination.perPage"
-    />
-
-    <InlineQuestion
-      v-for="question in questions"
-      :key="question.id"
-      :question="question"
-    />
+    <ListQuestions :questions="questions" />
 
     <Pagination
       v-if="pagination"
@@ -29,18 +18,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { PaginationDto, QuestionListDto } from '~/services/__generated-api'
 
 export default Vue.extend({
+  key: (to) => to.fullPath,
   layout: 'sidebar',
-  data() {
-    return {
-      questions: [] as QuestionListDto[],
-      pagination: null as PaginationDto | null,
-      page: 1,
-    }
-  },
-  async fetch() {
+  async asyncData({ route, $httpService }) {
     const sortMap = {
       'najwięcej-głosów': 'votes',
       'najwięcej-odpowiedzi': 'answers',
@@ -49,26 +31,29 @@ export default Vue.extend({
       najnowsze: 'date',
     }
 
-    let sort = this.$route.query.sortowanie as string
+    let sort = route.query.sortowanie as string
     if (!Object.keys(sortMap).includes(sort)) {
       sort = 'najnowsze'
     }
 
-    this.page = parseInt(this.$route.query.strona as string)
-    if (Number.isNaN(this.page) || this.page < 1) {
-      this.page = 1
+    let page = parseInt(route.query.strona as string)
+    if (Number.isNaN(page) || page < 1) {
+      page = 1
     }
 
     const { data: questions, pagination } =
-      await this.$httpService.questions.getQuestionsList({
-        page: this.page,
+      await $httpService.questions.getQuestionsList({
+        page,
         // TODO
         // @ts-ignore
         sort: sortMap[sort],
       })
 
-    this.questions = questions || []
-    this.pagination = pagination || null
+    return {
+      page,
+      questions,
+      pagination,
+    }
   },
   head: {
     title: 'Pytania',
@@ -76,18 +61,11 @@ export default Vue.extend({
     // TODO canonical links on first pages
   },
   watch: {
-    // TODO show loader
-    '$route.query': '$fetch',
-    '$route.query.strona'(page) {
-      if (page) {
-        window.scrollTo({ top: 0 })
-      }
-    },
     page(page) {
-      if (page === 1 && !this.$route.query.strona) return
       const query = { ...this.$route.query, strona: page }
       this.$router.push({ query })
     },
   },
+  watchQuery: ['strona', 'sortowanie'],
 })
 </script>
