@@ -1,16 +1,28 @@
 import { Context } from '@nuxt/types'
 
+import { questionsEngToPl } from '@/constants'
+
 export default function ({ route, redirect }: Context) {
-  if (route.fullPath.match(/^\/categories/)) {
+  if (route.path.match(/^\/categories/)) {
     redirect(301, '/kategorie')
   }
 
-  if (route.fullPath.match(/^\/login/)) {
+  if (route.path.match(/^\/login/)) {
     redirect(301, '/logowanie')
   }
 
-  // TODO handle query params
   if (route.fullPath.match(/^\/questions/)) {
-    redirect(301, '/pytania')
+    let params = route.fullPath.split('?')[1]
+
+    if (!params) return redirect(301, '/pytania')
+
+    for (const paramOrOption of Object.keys(questionsEngToPl)) {
+      params = params.replace(
+        paramOrOption,
+        // @ts-ignore
+        queryParamsOrOptions[paramOrOption]
+      )
+    }
+    redirect(301, `/pytania?${params}`)
   }
 }
