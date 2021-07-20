@@ -1,6 +1,6 @@
 <template>
   <ul class="inline-tags">
-    <li v-for="tag in tags" :key="tag.id" class="list-item">
+    <li v-for="tag in tags" :key="tag.name" class="list-item">
       <InlineTag :tag="tag" />
     </li>
   </ul>
