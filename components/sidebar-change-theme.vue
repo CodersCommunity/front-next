@@ -10,8 +10,8 @@
 </template>
 
 <style lang='scss' scoped>
-.change_theme{
-  &__container{
+.change_theme {
+  &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,21 +21,25 @@
     border: 1px solid var(--box--border-color);
 
     span {
-    font-size: 1.2em;
-    margin: 4px;
+      font-size: 1.2em;
+      margin: 4px;
+    }
   }
-  }
+
   &_button {
-    &__container{
+    &__container {
       display: flex;
     }
-    &:last-child{
+
+    &:last-child {
       color: var(--sidebar--stats--text-color);
       background: var(--sidebar--categories--background-color);
     }
+
     &:hover {
       cursor: pointer;
     }
+
     width: 5em;
     height: 2.5em;
     border-radius: 0;
