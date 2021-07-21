@@ -14,39 +14,46 @@ export default function ({ route, redirect }: Context) {
   if (route.path.match(/^\/questions/)) {
     if (!route.query) return redirect(301, '/pytania')
 
-    const newQueryParams = {}
+    const queryWithPage = transformStartToPage(route.query)
 
-    translateKeysAndValuesToPL(route.query, newQueryParams, questionsEngToPl)
+    const newQueryParams = translateKeysAndValuesToPL(
+      route.query,
+      questionsEngToPl,
+      queryWithPage
+    )
 
-    transformStartToPage(route.query, newQueryParams)
-
-    const newUrl = makeNewUrl('/pytania', newQueryParams)
-
-    redirect(301, newUrl)
+    redirect({ path: '/pytania', query: newQueryParams })
   }
 }
 
-function transformStartToPage(
-  queryParams: any,
-  newQueryParams: Record<string, string>
-) {
+/**
+ * Make new query object with start transformed to page (translated to PL)
+ * @param queryParams
+ */
+
+function transformStartToPage(queryParams: any): { strona: number } | {} {
   const parsedStart = parseInt(queryParams.start)
-  if (!parsedStart) return
+  if (!parsedStart) return {}
 
   let calculatedPage = Math.floor(parseInt(queryParams.start) / 20) + 1
 
   if (!calculatedPage) calculatedPage = 1
 
-  // @ts-ignore
-  newQueryParams.strona = calculatedPage
+  return { strona: calculatedPage }
 }
 
+/**
+ * Translates keys and values according based on a translation dictionary
+ * @param queryParams object to be translated
+ * @param translationLookup translation dictionary
+ * @param newQueryParams object to populate
+ */
 function translateKeysAndValuesToPL(
   queryParams: any,
-  newQueryParams: Record<string, string>,
-  translationLookup: Record<string, string>
+  translationLookup: Record<string, string>,
+  newQueryParams: any = {}
 ) {
-  Object.keys(queryParams).reduce(
+  return Object.keys(queryParams).reduce(
     (total: Record<string, string>, current: string) => {
       // @ts-ignore
       const keyTranslation = translationLookup[current]
@@ -62,16 +69,6 @@ function translateKeysAndValuesToPL(
 
       return total
     },
-    newQueryParams
+    { ...newQueryParams }
   )
-}
-
-function makeNewUrl(baseRoute: string, newQueryParams: Record<string, string>) {
-  baseRoute += '?'
-  for (const key of Object.keys(newQueryParams)) {
-    // @ts-ignore
-    const keyValue = `${key}=${newQueryParams[key]}`
-    baseRoute += `${keyValue}`
-  }
-  return baseRoute
 }

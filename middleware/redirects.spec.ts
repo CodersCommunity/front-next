@@ -56,7 +56,12 @@ describe('redirects middleware', () => {
     }
     // @ts-ignore
     redirects({ route, redirect })
-    expect(redirect).toBeCalledWith(301, '/pytania?sortowanie=gorące')
+    expect(redirect).toBeCalledWith({
+      path: '/pytania',
+      query: {
+        sortowanie: 'gorące',
+      },
+    })
   })
 
   it('redirects questions with query "start', () => {
@@ -68,6 +73,6 @@ describe('redirects middleware', () => {
     }
     // @ts-ignore
     redirects({ route, redirect })
-    expect(redirect).toBeCalledWith(301, '/pytania?strona=3')
+    expect(redirect).toBeCalledWith({ path: '/pytania', query: { strona: 3 } })
   })
 })
