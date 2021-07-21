@@ -1,5 +1,8 @@
 <template>
-  <li class="categories-item" :class="subcategoryUnderline">
+  <li
+    class="categories-item"
+    :class="{ 'categories-item--border-bottom': depth > 0 }"
+  >
     <div class="heading-container">
       <DynamicHeading class="category" :level="depth + 2">
         {{ category.title }}
@@ -32,20 +35,16 @@ export default Vue.extend({
       required: true,
     },
   },
-  computed: {
-    subcategoryUnderline() {
-      return { underline: this.depth > 0 }
-    },
-  },
 })
 </script>
 
 <style lang="scss" scoped>
 .categories-item {
   list-style: none;
+  padding: 8px 0;
 }
 
-.underline {
+.categories-item--border-bottom {
   border-bottom: 1px solid var(--box--border-color-soft);
 }
 
