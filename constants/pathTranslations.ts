@@ -1,9 +1,9 @@
-const queryParamsMap = {
+export const queryParamsMap = {
   sort: 'sortowanie',
   page: 'strona',
 }
 
-const sortOptionsMap = {
+export const sortOptionsMap = {
   votes: 'najwięcej-głosów',
   answers: 'najwięcej-odpowiedzi',
   views: 'najwięcej-odwiedzin',

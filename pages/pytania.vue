@@ -18,23 +18,20 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { sortOptionsMap } from '@/constants/index'
+import { invertObject } from '~/assets/ts/invert-object'
 
 export default Vue.extend({
   key: (to) => to.fullPath,
   layout: 'sidebar',
   async asyncData({ route, $httpService }) {
-    const sortMap = {
-      'najwięcej-głosów': 'votes',
-      'najwięcej-odpowiedzi': 'answers',
-      'najwięcej-odwiedzin': 'views',
-      gorące: 'hot',
-      najnowsze: 'date',
+    let frontQuerySort = route.query.sortowanie as string
+    if (!Object.values(sortOptionsMap).includes(frontQuerySort)) {
+      frontQuerySort = sortOptionsMap.hot
     }
 
-    let sort = route.query.sortowanie as string
-    if (!Object.keys(sortMap).includes(sort)) {
-      sort = 'najnowsze'
-    }
+    // @ts-ignore
+    const apiQuerySort = invertObject(sortOptionsMap)[frontQuerySort]
 
     let page = parseInt(route.query.strona as string)
     if (Number.isNaN(page) || page < 1) {
@@ -46,7 +43,7 @@ export default Vue.extend({
         page,
         // TODO
         // @ts-ignore
-        sort: sortMap[sort],
+        sort: apiQuerySort,
       })
 
     return {
