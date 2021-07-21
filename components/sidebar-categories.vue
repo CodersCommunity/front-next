@@ -7,7 +7,9 @@
         :key="category.id"
         class="category-item"
       >
-        {{ category.title }}
+        <router-link class="category-link" to="/">
+          {{ category.title }}
+        </router-link>
       </li>
     </ul>
 
@@ -20,7 +22,7 @@
           class="subcategory-item"
         >
           <!--TODO routing to subcategories pages-->
-          <router-link class="subcategory-link" to="/">
+          <router-link class="category-link" to="/">
             {{ subcategory.title }}
           </router-link>
         </li>
@@ -80,7 +82,7 @@ export default Vue.extend({
   list-style: none;
 }
 
-.subcategory-link {
+.category-link {
   text-decoration: none;
   color: inherit;
 }
