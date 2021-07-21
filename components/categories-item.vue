@@ -1,12 +1,22 @@
 <template>
-  <li>
-    <DynamicHeading :level="depth + 2">
-      {{ category.title }} ({{ category.questionsCount }})
-    </DynamicHeading>
+  <li
+    class="categories-item"
+    :class="{ 'categories-item--border-bottom': depth > 0 }"
+  >
+    <div class="heading-container">
+      <DynamicHeading class="category" :level="depth + 2">
+        {{ category.title }}
+      </DynamicHeading>
+      <div class="category-count">{{ category.questionsCount }} zapytań</div>
+    </div>
 
-    <p>{{ category.description }}</p>
+    <p class="description">{{ category.description }}</p>
 
-    <Categories :categories="category.subcategories" :depth="depth + 1" />
+    <Categories
+      class="subcategory"
+      :categories="category.subcategories"
+      :depth="depth + 1"
+    />
   </li>
 </template>
 
@@ -28,4 +38,33 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.categories-item {
+  list-style: none;
+  padding: 8px 0;
+}
+
+.categories-item--border-bottom {
+  border-bottom: 1px solid var(--box--border-color-soft);
+}
+
+.category {
+  margin: 8px 0;
+}
+
+.heading-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-count {
+  background: var(--categories--answers-number-background-color);
+  color: var(--categories--answers-number-text-color);
+  font-size: size(14);
+  padding: 4px 8px;
+}
+.description {
+  margin: 12px 0;
+}
+</style>
