@@ -1,17 +1,28 @@
 <template>
   <div class="categories">
     <h2 class="title">Kategorie Pytań</h2>
-    <ul>
-      <li v-for="category in categories" :key="category.id" class="item">
+    <ul class="categories-list">
+      <li
+        v-for="category in categories"
+        :key="category.id"
+        class="category-item"
+      >
         {{ category.title }}
       </li>
     </ul>
 
     <div v-for="category in categoriesWithSubcategories" :key="category.id">
       <h3 class="title">{{ category.title }}</h3>
-      <ul>
-        <li v-for="subcategory in category.subcategories" :key="subcategory.id">
-          {{ subcategory.title }}
+      <ul class="categories-list subcategories">
+        <li
+          v-for="subcategory in category.subcategories"
+          :key="subcategory.id"
+          class="subcategory-item"
+        >
+          <!--TODO routing to subcategories pages-->
+          <router-link class="subcategory-link" to="/">
+            {{ subcategory.title }}
+          </router-link>
         </li>
       </ul>
     </div>
@@ -45,11 +56,32 @@ export default Vue.extend({
 }
 
 .title {
-  text-align: center;
   font-size: size(16);
-  font-weight: normal;
+  font-weight: bold;
 
   padding: size(5);
-  border-bottom: 1px solid var(--sidebar--categories--text-color);
+  margin: size(8) 0;
+  border-bottom: 1px solid var(--sidebar--categories--border-color);
+}
+
+.subcategory-item {
+  font-size: size(12);
+  padding: 4px;
+}
+
+.subcategories {
+  display: flex;
+  flex-wrap: wrap;
+  margin: size(8) 0;
+}
+
+.categories-list {
+  padding-left: 10px;
+  list-style: none;
+}
+
+.subcategory-link {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
