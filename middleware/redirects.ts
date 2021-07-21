@@ -20,7 +20,7 @@ export default function ({ route, redirect }: Context) {
       params = params.replace(
         paramOrOption,
         // @ts-ignore
-        queryParamsOrOptions[paramOrOption]
+        questionsEngToPl[paramOrOption]
       )
     }
     redirect(301, `/pytania?${params}`)
