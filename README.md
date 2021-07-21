@@ -21,3 +21,7 @@ $ npm run test
 # Unit testy dev
 $ npm run test -- --watch
 ```
+
+## Pomoc w rozwoju
+
+[CONTRIBUTING.md](https://github.com/CodersCommunity/front-next/blob/master/CONTRIBUTING.md)
