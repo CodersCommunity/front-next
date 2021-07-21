@@ -5,10 +5,7 @@
     </TitleContainer>
 
     <Box>
-      <Categories
-        :categories="$store.state.categories"
-        class="smaller-indent"
-      />
+      <Categories :categories="$store.state.categories" class="indent" />
     </Box>
   </div>
 </template>
@@ -25,7 +22,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.smaller-indent {
+.indent {
   padding-left: 20px;
 }
 </style>

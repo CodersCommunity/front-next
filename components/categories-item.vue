@@ -63,8 +63,6 @@ export default Vue.extend({
   color: var(--categories--answers-number-text-color);
   font-size: size(14);
   padding: 4px 8px;
-  &:before {
-  }
 }
 .description {
   margin: 12px 0;
