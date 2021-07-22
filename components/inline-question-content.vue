@@ -2,7 +2,7 @@
   <div class="content-wrap">
     <h2 class="title">{{ question.title }}</h2>
     <p class="change">
-      Pytanie zadane <b>{{ question.change.date }}</b> przez
+      {{ whatsChangeText }} <b>{{ question.change.date }}</b> przez
       <InlineUser :user="question.change.user" /> w kategorii
       <router-link
         :to="{ name: 'pytania', query: { kategoria: question.category.path } }"
@@ -24,6 +24,17 @@ export default Vue.extend({
     question: {
       type: Object as PropType<InlineQuestionDto>,
       required: true,
+    },
+  },
+  computed: {
+    whatsChangeText(): string {
+      const type = this.question.change.type
+      const changesMap: { [key in typeof type]: string } = {
+        question_created: 'Pytanie zadane',
+        answer_created: 'Odpowiedź',
+      }
+
+      return changesMap[this.question.change.type]
     },
   },
 })
