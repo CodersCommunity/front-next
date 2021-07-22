@@ -7,6 +7,7 @@
       </main>
       <Sidebar class="sidebar" />
     </div>
+    <Footbar />
   </div>
 </template>
 
