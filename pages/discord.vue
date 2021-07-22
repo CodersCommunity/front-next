@@ -5,9 +5,9 @@
     </TitleContainer>
 
     <TitleContainer
-      class="discord-user-not-logged-in"
       v-if="!$store.state.currentUser"
-      v-bind:type="error"
+      class="discord-user-not-logged-in"
+      :type="error"
     >
       <router-link to="/logowanie">Zaloguj się</router-link> lub
       <router-link to="/logowanie">zarejestruj</router-link>, aby dołączyć do
@@ -19,13 +19,7 @@
         Posiadamy serwer Discord, na którym można podyskutować z innymi mniej
         oficjalnie niż na samym forum. Dostępne są kanały tekstowe oraz głosowe,
         a
-        <a
-          href="https://discord.com/"
-          target="_blank"
-          original-title=""
-          title=""
-          >aplikację Discorda</a
-        >
+        <a href="https://discord.com/" target="_blank">aplikację Discorda</a>
         uruchomisz w przeglądarce lub pobierzesz na dowolną platformę. Pamiętaj
         jednak, że jest to dodatek, a główne rozmowy i problemy należy
         rozwiązywać na forum. Musisz też wiedzieć, że nie jesteśmy dostępni
@@ -33,8 +27,6 @@
         chętnych do rozmowy. Aby dowiedzieć się&nbsp;więcej zapoznaj się z
         <a
           href="https://forum.pasja-informatyki.pl/447641/forumowy-discord-juz-jest"
-          original-title=""
-          title=""
           >tematem wprowadzającym</a
         >.
       </p>
@@ -61,15 +53,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { ContainerType } from '~/components/title-container.vue'
+import { TitleContainerType } from '~/constants'
 
 export default Vue.extend({
   layout: 'sidebar',
+  data() {
+    return { error: TitleContainerType.Error }
+  },
   head: {
     title: 'Discord',
-  },
-  data() {
-    return { error: ContainerType.Error }
   },
 })
 </script>

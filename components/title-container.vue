@@ -6,32 +6,27 @@
 
 <script lang="ts">
 import Vue from 'vue'
-
-export enum ContainerType {
-  MainTitle = 'main-title',
-  Answers = 'answers',
-  SimilarQuestions = 'similar-questions',
-  Error = 'error',
-}
+import { TitleContainerType } from '~/constants'
 
 export default Vue.extend({
   props: {
     type: {
       type: String,
-      default: ContainerType.MainTitle,
-      validator(type: ContainerType) {
-        return Object.values(ContainerType).includes(type)
+      default: TitleContainerType.MainTitle,
+      validator(type: TitleContainerType) {
+        return Object.values(TitleContainerType).includes(type)
       },
     },
   },
   computed: {
     classes(): Object {
       return {
-        'title-container--main-title': this.type === ContainerType.MainTitle,
-        'title-container--answers': this.type === ContainerType.Answers,
+        'title-container--main-title':
+          this.type === TitleContainerType.MainTitle,
+        'title-container--answers': this.type === TitleContainerType.Answers,
         'title-container--similar-questions':
-          this.type === ContainerType.SimilarQuestions,
-        'title-container--error': this.type === ContainerType.Error,
+          this.type === TitleContainerType.SimilarQuestions,
+        'title-container--error': this.type === TitleContainerType.Error,
       }
     },
   },
