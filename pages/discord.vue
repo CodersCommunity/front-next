@@ -7,7 +7,7 @@
     <TitleContainer
       v-if="!$store.state.currentUser"
       class="discord-user-not-logged-in"
-      type="'error'"
+      type="error"
     >
       <router-link to="/logowanie">Zaloguj się</router-link> lub
       <router-link to="/logowanie">zarejestruj</router-link>, aby dołączyć do
