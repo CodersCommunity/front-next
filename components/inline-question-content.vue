@@ -4,7 +4,11 @@
     <p class="change">
       Pytanie zadane <b>{{ question.change.date }}</b> przez
       <InlineUser :user="question.change.user" /> w kategorii
-      <b>{{ question.category.title }}</b>
+      <router-link
+        :to="{ name: 'pytania', query: { kategoria: question.category.path } }"
+        class="category-link"
+        v-text="question.category.title"
+      />
     </p>
 
     <InlineTags :tags="question.tags" />
@@ -39,5 +43,15 @@ export default Vue.extend({
 
 .change {
   margin: 0 0 size(6) 0;
+}
+
+.category-link {
+  color: var(--question--title--text-color);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 }
 </style>

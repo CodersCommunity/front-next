@@ -3,16 +3,26 @@
     <ul class="list">
       <li>
         <router-link
-          to="/pytania"
+          :to="{
+            name: 'pytania',
+            query: { ...$route.query, sortowanie: 'najnowsze', strona: '1' },
+          }"
           class="link"
-          :class="{ 'link--active': !$route.query.sortowanie }"
+          :class="{
+            'link--active':
+              !$route.query.sortowanie ||
+              $route.query.sortowanie === 'najnowsze',
+          }"
         >
           Najnowsze
         </router-link>
       </li>
       <li>
         <router-link
-          to="/pytania?sortowanie=gorące"
+          :to="{
+            name: 'pytania',
+            query: { ...$route.query, sortowanie: 'gorące', strona: '1' },
+          }"
           class="link"
           :class="{ 'link--active': $route.query.sortowanie === 'gorące' }"
         >
@@ -21,7 +31,14 @@
       </li>
       <li>
         <router-link
-          to="/pytania?sortowanie=najwięcej-głosów"
+          :to="{
+            name: 'pytania',
+            query: {
+              ...$route.query,
+              sortowanie: 'najwięcej-głosów',
+              strona: '1',
+            },
+          }"
           class="link"
           :class="{
             'link--active': $route.query.sortowanie === 'najwięcej-głosów',
@@ -32,7 +49,14 @@
       </li>
       <li>
         <router-link
-          to="/pytania?sortowanie=najwięcej-odpowiedzi"
+          :to="{
+            name: 'pytania',
+            query: {
+              ...$route.query,
+              sortowanie: 'najwięcej-odpowiedzi',
+              strona: '1',
+            },
+          }"
           class="link"
           :class="{
             'link--active': $route.query.sortowanie === 'najwięcej-odpowiedzi',
@@ -43,7 +67,14 @@
       </li>
       <li>
         <router-link
-          to="/pytania?sortowanie=najwięcej-odwiedzin"
+          :to="{
+            name: 'pytania',
+            query: {
+              ...$route.query,
+              sortowanie: 'najwięcej-odwiedzin',
+              strona: '1',
+            },
+          }"
           class="link"
           :class="{
             'link--active': $route.query.sortowanie === 'najwięcej-odwiedzin',

@@ -1,8 +1,11 @@
 <template>
-  <span class="inline-tag">
+  <router-link
+    :to="{ name: 'pytania', query: { tag: tag.name } }"
+    class="inline-tag"
+  >
     <span v-if="tag.favourite" class="favourite">★</span>
     {{ tag.name }}
-  </span>
+  </router-link>
 </template>
 
 <script lang="ts">
@@ -27,5 +30,6 @@ export default Vue.extend({
   background-color: var(--tag--background-color);
   padding: 4px 10px;
   font-size: size(11);
+  text-decoration: none;
 }
 </style>

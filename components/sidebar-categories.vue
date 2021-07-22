@@ -7,7 +7,7 @@
         :key="category.id"
         class="category-item"
       >
-        <router-link class="category-link" to="/">
+        <router-link class="category-link" :to="linkToCategory(category)">
           {{ category.title }}
         </router-link>
       </li>
@@ -21,8 +21,7 @@
           :key="subcategory.id"
           class="subcategory-item"
         >
-          <!--TODO routing to subcategories pages-->
-          <router-link class="category-link" to="/">
+          <router-link class="category-link" :to="linkToCategory(subcategory)">
             {{ subcategory.title }}
           </router-link>
         </li>
@@ -33,6 +32,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { CategoryDto } from '~/services/__generated-api'
 
 export default Vue.extend({
   computed: {
@@ -43,6 +43,16 @@ export default Vue.extend({
       return this.$accessor.categories.filter(
         (category) => category.subcategories.length > 0
       )
+    },
+  },
+  methods: {
+    linkToCategory(category: CategoryDto) {
+      return {
+        name: 'pytania',
+        query: {
+          kategoria: category.path,
+        },
+      }
     },
   },
 })
