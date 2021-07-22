@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>Najnowsze pytania</h1>
+    <TitleContainer>
+      <h1>Najnowsze pytania i odpowiedzi</h1>
+    </TitleContainer>
+    <ListQuestions :questions="questions" />
   </div>
 </template>
 
@@ -9,8 +12,12 @@ import Vue from 'vue'
 
 export default Vue.extend({
   layout: 'sidebar',
+  async asyncData({ $httpService }) {
+    const questions = await $httpService.questions.getQuestionsListForHome()
+    return { questions }
+  },
   head: {
-    title: 'Najnowsze pytania',
+    title: 'Najnowsze pytania i odpowiedzi',
   },
 })
 </script>
