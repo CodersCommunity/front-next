@@ -7,12 +7,15 @@
       </main>
       <Sidebar class="sidebar" />
     </div>
+    <Footbar />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import Footbar from '~/components/footbar.vue'
 export default Vue.extend({
+  components: { Footbar },
   head: {
     titleTemplate: '%s - Forum Pasja Informatyki',
   },
