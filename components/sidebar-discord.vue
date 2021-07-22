@@ -1,11 +1,13 @@
 <template>
   <div class="discord-container">
     <router-link class="discord-link" to="/discord">
-      <img src="/images/discord.png" alt="Discord" width="160" height="46" />
+      <img src="/images/discord.png" />
       <div>Może pogadamy?</div>
     </router-link>
   </div>
 </template>
+
+<script></script>
 
 <style lang="scss" scoped>
 .discord-container {

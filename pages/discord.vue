@@ -7,7 +7,7 @@
     <TitleContainer
       v-if="!$store.state.currentUser"
       class="discord-user-not-logged-in"
-      :type="error"
+      type="'error'"
     >
       <router-link to="/logowanie">Zaloguj się</router-link> lub
       <router-link to="/logowanie">zarejestruj</router-link>, aby dołączyć do
@@ -53,13 +53,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { TitleContainerType } from '~/constants'
 
 export default Vue.extend({
   layout: 'sidebar',
-  data() {
-    return { error: TitleContainerType.Error }
-  },
   head: {
     title: 'Discord',
   },
