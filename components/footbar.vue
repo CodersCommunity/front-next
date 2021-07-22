@@ -6,18 +6,7 @@
   </footer>
 </template>
 
-<script>
-import FootbarFacebook from '~/components/footbar-facebook'
-import FootbarValuableInfo from '~/components/footbar-valuable-info'
-import FootbarRecomendedResources from '~/components/footbar-recomended-resources'
-export default {
-  components: {
-    FootbarRecomendedResources,
-    FootbarValuableInfo,
-    FootbarFacebook,
-  },
-}
-</script>
+<script></script>
 
 <style lang="scss" scoped>
 .footer-container {

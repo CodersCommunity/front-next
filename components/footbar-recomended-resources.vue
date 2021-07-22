@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <FootbarSectionHeader>Polecane miejsca w Sieci</FootbarSectionHeader>
-    <FootbarLinkList>
+  <FootbarColumn>
+    <template v-slot:header> Polecane miejsca w Sieci </template>
+    <template v-slot:links>
       <li>
         <a href="https://github.com/CodersCommunity/" target="_blank"
           >GitHub CodersCommunity</a
@@ -35,17 +35,10 @@
           >Egzamin ekonomista AU35 AU36</a
         >
       </li>
-    </FootbarLinkList>
-  </div>
+    </template>
+  </FootbarColumn>
 </template>
 
-<script>
-import FootbarSectionHeader from '~/components/footbar-section-header'
-import FootbarLinkList from '~/components/footbar-link-list'
-export default {
-  name: 'footbar-recomended-resources',
-  components: { FootbarLinkList, FootbarSectionHeader },
-}
-</script>
+<script></script>
 
 <style scoped></style>

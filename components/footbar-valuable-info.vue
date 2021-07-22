@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <FootbarSectionHeader>Cenne informacje</FootbarSectionHeader>
+  <FootbarColumn>
+    <template v-slot:header>Cenne informacje</template>
     <!--TODO Link to actual pages-->
-    <FootbarLinkList>
+    <template v-slot:links>
       <li>
         <router-link to="/">Jak Korzystać z Forum? Częste pytania</router-link>
       </li>
@@ -24,16 +24,10 @@
       <li>
         <router-link to="/">Zasady przyznawania punktów</router-link>
       </li>
-    </FootbarLinkList>
-  </div>
+    </template>
+  </FootbarColumn>
 </template>
 
-<script>
-import FootbarSectionHeader from '~/components/footbar-section-header'
-import FootbarLinkList from '~/components/footbar-link-list'
-export default {
-  components: { FootbarLinkList, FootbarSectionHeader },
-}
-</script>
+<script></script>
 
 <style scoped></style>
