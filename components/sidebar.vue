@@ -1,5 +1,6 @@
 <template>
   <aside>
+    <SidebarDiscord />
     <SidebarStats />
     <SidebarCategories />
     <SidebarChangeTheme />

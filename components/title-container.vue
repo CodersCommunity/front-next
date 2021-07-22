@@ -11,6 +11,7 @@ enum ContainerType {
   MainTitle = 'main-title',
   Answers = 'answers',
   SimilarQuestions = 'similar-questions',
+  Error = 'error',
 }
 
 export default Vue.extend({
@@ -30,6 +31,7 @@ export default Vue.extend({
         'title-container--answers': this.type === ContainerType.Answers,
         'title-container--similar-questions':
           this.type === ContainerType.SimilarQuestions,
+        'title-container--error': this.type === ContainerType.Error,
       }
     },
   },
@@ -54,6 +56,10 @@ export default Vue.extend({
     background-color: var(
       --title-container--similar-questions--background-color
     );
+  }
+
+  &--error {
+    background-color: var(--title-container--error--background-color);
   }
 
   h1,
