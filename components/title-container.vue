@@ -7,7 +7,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-export enum ContainerType {
+enum ContainerType {
   MainTitle = 'main-title',
   Answers = 'answers',
   SimilarQuestions = 'similar-questions',
