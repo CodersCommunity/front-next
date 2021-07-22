@@ -6,8 +6,6 @@
   </footer>
 </template>
 
-<script></script>
-
 <style lang="scss" scoped>
 .footer-container {
   width: 100%;

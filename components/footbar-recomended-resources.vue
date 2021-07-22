@@ -1,7 +1,7 @@
 <template>
   <FootbarColumn>
-    <template v-slot:header> Polecane miejsca w Sieci </template>
-    <template v-slot:links>
+    <template #header> Polecane miejsca w Sieci </template>
+    <template #links>
       <li>
         <a href="https://github.com/CodersCommunity/" target="_blank"
           >GitHub CodersCommunity</a
@@ -38,7 +38,3 @@
     </template>
   </FootbarColumn>
 </template>
-
-<script></script>
-
-<style scoped></style>

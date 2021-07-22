@@ -7,8 +7,6 @@
   </div>
 </template>
 
-<script></script>
-
 <style lang="scss" scoped>
 .footbar-section-header {
   padding: 4px 0;

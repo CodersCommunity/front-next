@@ -1,8 +1,8 @@
 <template>
   <FootbarColumn>
-    <template v-slot:header>Cenne informacje</template>
+    <template #header>Cenne informacje</template>
     <!--TODO Link to actual pages-->
-    <template v-slot:links>
+    <template #links>
       <li>
         <router-link to="/">Jak Korzystać z Forum? Częste pytania</router-link>
       </li>
@@ -27,7 +27,3 @@
     </template>
   </FootbarColumn>
 </template>
-
-<script></script>
-
-<style scoped></style>

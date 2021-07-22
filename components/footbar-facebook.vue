@@ -1,7 +1,7 @@
 <template>
   <FootbarColumn>
-    <template v-slot:header>Facebook Pasja Informatyki</template>
-    <template v-slot:links>
+    <template #header>Facebook Pasja Informatyki</template>
+    <template #links>
       <li>
         <a
           class="facebook-link"
@@ -13,8 +13,6 @@
     </template>
   </FootbarColumn>
 </template>
-
-<script></script>
 
 <style lang="scss" scoped>
 .facebook-link {
