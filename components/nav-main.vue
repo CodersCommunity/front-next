@@ -22,6 +22,11 @@
         text="Kategorie"
         icon="https://img.icons8.com/color/48/000000/flow-chart.png"
       />
+      <NavMainItem
+        link-to="/discord"
+        text="Discord"
+        icon="https://img.icons8.com/fluent/48/000000/discord-logo.png"
+      />
       <!--
       <NavMainItem
         link-to="/bez-odpowiedzi"
