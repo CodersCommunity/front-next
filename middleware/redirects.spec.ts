@@ -36,6 +36,17 @@ describe('redirects middleware', () => {
     expect(redirect).toBeCalledWith(301, '/logowanie')
   })
 
+  it('redirects last activity', () => {
+    const redirect = jest.fn()
+    const route: Partial<Route> = {
+      fullPath: '/activity',
+      path: '/activity',
+    }
+    // @ts-ignore
+    redirects({ route, redirect })
+    expect(redirect).toBeCalledWith(301, '/ostatnia-aktywnosc')
+  })
+
   it('redirects questions without query', () => {
     const redirect = jest.fn()
     const route: Partial<Route> = {

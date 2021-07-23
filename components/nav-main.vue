@@ -8,6 +8,11 @@
         exact
       />
       <NavMainItem
+        link-to="/ostatnia-aktywnosc"
+        text="Ostatnia aktywność"
+        icon="https://img.icons8.com/color/48/000000/calendar--v1.png"
+      />
+      <NavMainItem
         link-to="/pytania"
         text="Pytania"
         icon="https://img.icons8.com/color/48/000000/ask-question.png"
@@ -17,11 +22,7 @@
         text="Kategorie"
         icon="https://img.icons8.com/color/48/000000/flow-chart.png"
       />
-      <!-- <NavMainItem
-        link-to="/ostatnia-aktywnosc"
-        text="Ostatnia aktywność"
-        icon="https://img.icons8.com/color/48/000000/calendar--v1.png"
-      />
+      <!--
       <NavMainItem
         link-to="/bez-odpowiedzi"
         text="Bez odpowiedzi"

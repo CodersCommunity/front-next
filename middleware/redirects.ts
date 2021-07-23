@@ -7,6 +7,10 @@ export default function ({ route, redirect }: Context) {
     redirect(301, '/kategorie')
   }
 
+  if (route.path.match(/^\/activity/)) {
+    redirect(301, '/ostatnia-aktywnosc')
+  }
+
   if (route.path.match(/^\/login/)) {
     redirect(301, '/logowanie')
   }
