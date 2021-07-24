@@ -47,6 +47,32 @@ describe('redirects middleware', () => {
     expect(redirect).toBeCalledWith(301, '/ostatnia-aktywnosc')
   })
 
+  it('redirects unanswered without query', () => {
+    const redirect = jest.fn()
+    const route: Partial<Route> = {
+      fullPath: '/unanswered',
+      path: '/unanswered',
+    }
+    // @ts-ignore
+    redirects({ route, redirect })
+    expect(redirect).toBeCalledWith(301, '/bez-odpowiedzi')
+  })
+
+  it('redirects unanswered with query', () => {
+    const redirect = jest.fn()
+    const route: Partial<Route> = {
+      fullPath: '/unanswered?start=80',
+      path: '/unanswered',
+      query: { start: '80' },
+    }
+    // @ts-ignore
+    redirects({ route, redirect })
+    expect(redirect).toBeCalledWith({
+      path: '/bez-odpowiedzi',
+      query: { strona: '5' },
+    })
+  })
+
   it('redirects questions without query', () => {
     const redirect = jest.fn()
     const route: Partial<Route> = {
@@ -84,6 +110,9 @@ describe('redirects middleware', () => {
     }
     // @ts-ignore
     redirects({ route, redirect })
-    expect(redirect).toBeCalledWith({ path: '/pytania', query: { strona: 3 } })
+    expect(redirect).toBeCalledWith({
+      path: '/pytania',
+      query: { strona: '3' },
+    })
   })
 })

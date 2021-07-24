@@ -13,6 +13,11 @@
         icon="https://img.icons8.com/color/48/000000/calendar--v1.png"
       />
       <NavMainItem
+        link-to="/bez-odpowiedzi"
+        text="Bez odpowiedzi"
+        icon="https://img.icons8.com/color/48/000000/delete-property.png"
+      />
+      <NavMainItem
         link-to="/pytania"
         text="Pytania"
         icon="https://img.icons8.com/color/48/000000/ask-question.png"
@@ -28,11 +33,6 @@
         icon="https://img.icons8.com/fluent/48/000000/discord-logo.png"
       />
       <!--
-      <NavMainItem
-        link-to="/bez-odpowiedzi"
-        text="Bez odpowiedzi"
-        icon="https://img.icons8.com/color/48/000000/delete-property.png"
-      />
       <NavMainItem
         link-to="/zadaj-pytanie"
         text="Zadaj pytanie"

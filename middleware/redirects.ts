@@ -7,12 +7,19 @@ export default function ({ route, redirect }: Context) {
     redirect(301, '/kategorie')
   }
 
+  if (route.path.match(/^\/login/)) {
+    redirect(301, '/logowanie')
+  }
+
   if (route.path.match(/^\/activity/)) {
     redirect(301, '/ostatnia-aktywnosc')
   }
 
-  if (route.path.match(/^\/login/)) {
-    redirect(301, '/logowanie')
+  if (route.path.match(/^\/unanswered/)) {
+    if (!route.query) return redirect(301, '/bez-odpowiedzi')
+
+    const queryWithPage = transformStartToPage(route.query)
+    redirect({ path: '/bez-odpowiedzi', query: queryWithPage })
   }
 
   if (route.path.match(/^\/questions/)) {
@@ -35,7 +42,7 @@ export default function ({ route, redirect }: Context) {
  * @param queryParams
  */
 
-function transformStartToPage(queryParams: any): { strona: number } | {} {
+function transformStartToPage(queryParams: any): { strona: string } | {} {
   const parsedStart = parseInt(queryParams.start)
   if (!parsedStart) return {}
 
@@ -43,7 +50,7 @@ function transformStartToPage(queryParams: any): { strona: number } | {} {
 
   if (!calculatedPage) calculatedPage = 1
 
-  return { strona: calculatedPage }
+  return { strona: `${calculatedPage}` }
 }
 
 /**
