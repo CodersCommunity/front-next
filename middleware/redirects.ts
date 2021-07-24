@@ -4,36 +4,33 @@ import { questionsEngToPl } from '@/constants'
 
 export default function ({ route, redirect }: Context) {
   if (route.path.match(/^\/categories/)) {
-    redirect(301, '/kategorie')
+    return redirect(301, '/kategorie')
   }
 
   if (route.path.match(/^\/login/)) {
-    redirect(301, '/logowanie')
+    return redirect(301, '/logowanie')
   }
 
   if (route.path.match(/^\/activity/)) {
-    redirect(301, '/ostatnia-aktywnosc')
+    return redirect(301, '/ostatnia-aktywnosc')
   }
 
   if (route.path.match(/^\/unanswered/)) {
     if (!route.query) return redirect(301, '/bez-odpowiedzi')
-
     const queryWithPage = transformStartToPage(route.query)
-    redirect({ path: '/bez-odpowiedzi', query: queryWithPage })
+    return redirect({ path: '/bez-odpowiedzi', query: queryWithPage })
   }
 
   if (route.path.match(/^\/questions/)) {
     if (!route.query) return redirect(301, '/pytania')
-
     const queryWithPage = transformStartToPage(route.query)
-
     const newQueryParams = translateKeysAndValuesToPL(
       route.query,
       questionsEngToPl,
       queryWithPage
     )
 
-    redirect({ path: '/pytania', query: newQueryParams })
+    return redirect({ path: '/pytania', query: newQueryParams })
   }
 }
 
