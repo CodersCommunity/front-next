@@ -95,5 +95,8 @@ export default Vue.extend({
 .category-link {
   text-decoration: none;
   color: inherit;
+  &:hover {
+    font-weight: bold;
+  }
 }
 </style>
