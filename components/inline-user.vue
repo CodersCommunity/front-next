@@ -1,7 +1,7 @@
 <template>
   <span>
     <span v-if="user.favourite" class="favourite">★</span>
-    <span :class="userLevel" data-test="username">{{ user.name }}</span>
+    <span :class="usernameStyle" data-test="username">{{ user.name }}</span>
     <span class="points">({{ user.points }} p.)</span>
   </span>
 </template>
