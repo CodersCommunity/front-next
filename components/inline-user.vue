@@ -1,7 +1,9 @@
 <template>
   <span>
     <span v-if="user.favourite" class="favourite">★</span>
-    <span :class="usernameStyle" data-test="username">{{ user.name }}</span>
+    <span class="username--bold" :class="usernameStyle" data-test="username">{{
+      user.name
+    }}</span>
     <span class="points">({{ user.points }} p.)</span>
   </span>
 </template>
@@ -9,6 +11,20 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { InlineUserDto, UserLevelDto } from '~/services/__generated-api'
+
+export default Vue.extend({
+  props: {
+    user: {
+      type: Object as PropType<InlineUserDto>,
+      required: true,
+    },
+  },
+  computed: {
+    usernameStyle() {
+      return getUsernameStyle(this.$props.user.level)
+    },
+  },
+})
 
 function getUsernameStyle(level: UserLevelDto) {
   switch (level) {
@@ -30,49 +46,31 @@ function getUsernameStyle(level: UserLevelDto) {
       return 'username'
   }
 }
-
-export default Vue.extend({
-  props: {
-    user: {
-      type: Object as PropType<InlineUserDto>,
-      required: true,
-    },
-  },
-  computed: {
-    usernameStyle() {
-      return getUsernameStyle(this.$props.user.level)
-    },
-  },
-})
 </script>
 
 <style lang="scss" scoped>
 .username {
-  font-weight: bold;
-  color: #898989;
-  &--approved {
+  &--bold {
     font-weight: bold;
-    color: #000000ff;
+  }
+  color: var(--user--base--text-color);
+  &--approved {
+    color: var(--user--approved--text-color);
   }
   &--expert {
-    font-weight: bold;
-    color: #6d0080;
+    color: var(--user--expert--text-color);
   }
   &--editor {
-    font-weight: bold;
-    color: #007ca0;
+    color: var(--user--editor--text-color);
   }
   &--moderator {
-    font-weight: bold;
-    color: #007200;
+    color: var(--user--moderator--text-color);
   }
   &--admin {
-    font-weight: bold;
-    color: #ec0000;
+    color: var(--user--admin--text-color);
   }
   &--super-admin {
-    font-weight: bold;
-    color: #bc0000;
+    color: var(--user--super-admin--text-color);
   }
 }
 </style>
