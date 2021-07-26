@@ -111,40 +111,45 @@
   margin-top: $gap-width;
 
   color: var(--footbar--text-color);
-  border: 1px solid var(--top-bar--border-color);
+  border-top: 1px solid var(--top-bar--border-color);
 }
 
 .footbar-columns {
   display: flex;
   justify-content: center;
+  background: var(--footbar--background-color);
+
   @include mobile {
     flex-direction: column;
   }
-  background: var(--footbar--background-color);
 }
 
 .footbar-section-header {
   padding: 4px 0;
   border-bottom: 1px solid var(--footbar--heading-underline);
 }
+
 .footbar-link-list {
   padding-left: 0;
   list-style: none;
   font-size: size(14);
+
   li {
     padding: 4px;
   }
+
   a {
     text-decoration: none;
     color: inherit;
   }
 }
+
 .footbar-column-container {
   margin: size(20);
 }
 
 .facebook-link {
-  &:before {
+  &::before {
     content: '\1F44D';
   }
 }
@@ -152,17 +157,29 @@
 .acknowledgments-container {
   display: flex;
   justify-content: space-between;
-  width: 100%;
   background-color: var(--footbar--acknowledgment--background-color);
-  padding: 4px;
-  font-size: size(14);
+  border-top: 1px solid var(--top-bar--border-color);
+  padding: size(12);
+  font-size: size(12);
+
+  @include mobile {
+    display: block;
+    padding: size(12) size(20);
+  }
+
   a {
     color: inherit;
     text-decoration: none;
-    &:hover {
-      font-weight: bold;
+    padding: 4px;
+
+    @include mobile {
+      display: block;
     }
-    padding: 4px 8px;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
   }
 }
 </style>
