@@ -1,5 +1,9 @@
 <template>
-  <article class="wrap">
+  <article
+    class="wrap"
+    :class="$props.question.favourite ? 'favourite' : ''"
+    data-test="question-container"
+  >
     <InlineQuestionStats class="stats" :question="question" />
     <InlineQuestionContent class="content" :question="question" />
   </article>
@@ -26,6 +30,10 @@ export default Vue.extend({
   padding: 8px 8px 10px;
   margin-bottom: -1px;
   display: flex;
+}
+
+.favourite {
+  border-left: 1px solid var(--question--favourite--border-color);
 }
 
 .stats {

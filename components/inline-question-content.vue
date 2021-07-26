@@ -1,6 +1,14 @@
 <template>
   <div class="content-wrap">
-    <h2 class="title">{{ question.title }}</h2>
+    <h2 class="title">
+      <img
+        v-if="question.closed"
+        data-test="question-closed-icon"
+        src="/images/closed-question.png"
+        class="closed-icon"
+      />
+      <span>{{ question.title }}</span>
+    </h2>
     <p class="change">
       {{ whatsChangeText }} <b>{{ question.change.date }}</b> przez
       <InlineUser :user="question.change.user" /> w kategorii
@@ -67,6 +75,13 @@ export default Vue.extend({
   font-weight: 700;
   margin: size(2) 0 size(18);
   color: var(--question--title--text-color);
+  display: flex;
+  align-items: center;
+  &:hover {
+    .closed-icon {
+      background-color: var(--question--closed-icon--hover--background-color);
+    }
+  }
 }
 
 .change {
@@ -81,5 +96,11 @@ export default Vue.extend({
   &:focus {
     text-decoration: underline;
   }
+}
+.closed-icon {
+  background-color: var(--question--closed-icon--background-color);
+  border-radius: 18px;
+  padding: 3px;
+  margin: 0 4px;
 }
 </style>
