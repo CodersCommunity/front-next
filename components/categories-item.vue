@@ -5,7 +5,9 @@
   >
     <div class="heading-container">
       <DynamicHeading class="category" :level="depth + 2">
-        {{ category.title }}
+        <router-link class="category-link" :to="linkToCategory(category)">
+          {{ category.title }}</router-link
+        >
       </DynamicHeading>
       <div class="category-count">{{ category.questionsCount }} zapytań</div>
     </div>
@@ -35,27 +37,44 @@ export default Vue.extend({
       required: true,
     },
   },
+  methods: {
+    linkToCategory(category: CategoryDto) {
+      return {
+        name: 'pytania',
+        query: {
+          kategoria: category.path,
+        },
+      }
+    },
+  },
 })
 </script>
 
 <style lang="scss" scoped>
-.categories-item {
-  list-style: none;
-  padding: 8px 0;
-}
-
-.categories-item--border-bottom {
-  border-bottom: 1px solid var(--box--border-color-soft);
-}
-
-.category {
-  margin: 8px 0;
-}
-
 .heading-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.categories-item {
+  list-style: none;
+  padding: 8px 0;
+  &--border-bottom {
+    border-bottom: 1px solid var(--box--border-color-soft);
+  }
+}
+
+.category-link {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.category {
+  margin: 8px 0;
 }
 
 .category-count {
