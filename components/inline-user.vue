@@ -10,7 +10,7 @@
 import Vue, { PropType } from 'vue'
 import { InlineUserDto, UserLevelDto } from '~/services/__generated-api'
 
-function setUsernameStyle(level: UserLevelDto) {
+function getUsernameStyle(level: UserLevelDto) {
   switch (level) {
     case 0:
       return 'username'
@@ -39,8 +39,8 @@ export default Vue.extend({
     },
   },
   computed: {
-    userLevel() {
-      return setUsernameStyle(this.$props.user.level)
+    usernameStyle() {
+      return getUsernameStyle(this.$props.user.level)
     },
   },
 })
