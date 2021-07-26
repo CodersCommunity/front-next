@@ -5,6 +5,7 @@
         v-if="question.closed"
         data-test="question-closed-icon"
         src="/images/closed-question.png"
+        alt=""
         class="closed-icon"
       />
       <span>{{ question.title }}</span>

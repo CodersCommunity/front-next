@@ -1,7 +1,7 @@
 <template>
   <article
     class="wrap"
-    :class="$props.question.favourite ? 'favourite' : ''"
+    :class="{ favourite: $props.question.favourite }"
     data-test="question-container"
   >
     <InlineQuestionStats class="stats" :question="question" />
