@@ -12,12 +12,12 @@
   padding: size(20) 0;
   background: var(--box--background-color);
   margin-bottom: $gap-width;
+
   @include mobile {
     display: none;
   }
 }
 .discord-link {
-  text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;

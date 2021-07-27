@@ -66,11 +66,7 @@ export default Vue.extend({
 }
 
 .category-link {
-  text-decoration: none;
   color: inherit;
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 .category {

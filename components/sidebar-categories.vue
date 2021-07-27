@@ -7,7 +7,7 @@
         :key="category.id"
         class="category-item"
       >
-        <router-link class="category-link" :to="linkToCategory(category)">
+        <router-link :to="linkToCategory(category)">
           {{ category.title }}
         </router-link>
       </li>
@@ -90,13 +90,5 @@ export default Vue.extend({
 .categories-list {
   padding-left: 10px;
   list-style: none;
-}
-
-.category-link {
-  text-decoration: none;
-  color: inherit;
-  &:hover {
-    font-weight: bold;
-  }
 }
 </style>

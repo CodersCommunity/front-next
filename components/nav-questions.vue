@@ -99,13 +99,7 @@
 .link {
   display: block;
   color: var(--title-container--text-color);
-  text-decoration: none;
   margin: size(5) size(15) size(5) 0;
-
-  &:hover,
-  &:focus {
-    text-decoration: underline;
-  }
 
   &--active {
     font-weight: bold;

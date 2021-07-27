@@ -87,13 +87,8 @@ export default Vue.extend({
 
 .category-link {
   color: var(--question--title--text-color);
-  text-decoration: none;
-
-  &:hover,
-  &:focus {
-    text-decoration: underline;
   }
-}
+
 .closed-icon {
   position: relative;
   top: 2px;

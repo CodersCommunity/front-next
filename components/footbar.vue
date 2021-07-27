@@ -122,11 +122,6 @@
 
 .footbar-link-list {
   font-size: size(14);
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
 }
 
 .footbar-column-container {
@@ -153,17 +148,10 @@
   }
 
   a {
-    color: inherit;
-    text-decoration: none;
     padding: 4px;
 
     @include mobile {
       display: block;
-    }
-
-    &:hover,
-    &:focus {
-      text-decoration: underline;
     }
   }
 }

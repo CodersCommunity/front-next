@@ -65,15 +65,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .discord-description {
   a {
-    text-decoration: none;
-    color: inherit;
     font-weight: bold;
-  }
-}
-
-.discord-user-not-logged-in {
-  a {
-    color: inherit;
   }
 }
 </style>

@@ -47,7 +47,6 @@ export default Vue.extend({
   font-weight: bold;
   text-align: center;
   color: var(--nav-main--item--text-color);
-  text-decoration: none;
   outline: none;
 
   transition: background-color 0.2s;
