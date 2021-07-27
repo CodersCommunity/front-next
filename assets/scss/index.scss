@@ -7,9 +7,10 @@ body {
   color: var(--body--text-color);
   background-color: var(--body--background-color);
   overflow-y: scroll;
+  line-height: 1.5;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
 }
 

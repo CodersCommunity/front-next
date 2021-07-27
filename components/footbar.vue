@@ -123,10 +123,6 @@
 .footbar-link-list {
   font-size: size(14);
 
-  li {
-    padding: 4px 0;
-  }
-
   a {
     text-decoration: none;
     color: inherit;
