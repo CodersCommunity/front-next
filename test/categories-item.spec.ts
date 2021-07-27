@@ -20,33 +20,49 @@ const propsData = {
 
 describe('CategoriesItem', () => {
   test('is a list item', () => {
-    const wrapper = shallowMount(CategoriesItem, { propsData })
+    const wrapper = shallowMount(CategoriesItem, {
+      stubs: ['router-link'],
+      propsData,
+    })
     expect(wrapper.element.tagName).toBe('LI')
   })
 
   test('has title', () => {
-    const wrapper = shallowMount(CategoriesItem, { propsData })
+    const wrapper = shallowMount(CategoriesItem, {
+      stubs: ['router-link'],
+      propsData,
+    })
     expect(wrapper.text()).toContain(exampleCategory.title)
   })
 
   test('has questions count', () => {
-    const wrapper = shallowMount(CategoriesItem, { propsData })
+    const wrapper = shallowMount(CategoriesItem, {
+      stubs: ['router-link'],
+      propsData,
+    })
     expect(wrapper.text()).toContain(`${exampleCategory.questionsCount}`)
   })
 
   test('has description', () => {
-    const wrapper = shallowMount(CategoriesItem, { propsData })
+    const wrapper = shallowMount(CategoriesItem, {
+      stubs: ['router-link'],
+      propsData,
+    })
     expect(wrapper.text()).toContain(exampleCategory.description)
   })
 
   test('has subcategories', () => {
-    const wrapper = mount(CategoriesItem, { propsData })
+    const wrapper = mount(CategoriesItem, {
+      stubs: ['router-link'],
+      propsData,
+    })
     expect(wrapper.findComponent(Categories).exists()).toBe(true)
   })
 
   test('has heading with level based on depth', () => {
     for (let i = 0; i < 5; i++) {
       const wrapper = mount(CategoriesItem, {
+        stubs: ['router-link'],
         propsData: {
           depth: i,
           category: exampleCategory,
