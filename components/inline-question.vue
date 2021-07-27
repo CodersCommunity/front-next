@@ -1,6 +1,6 @@
 <template>
   <article
-    class="wrap"
+    class="question-inline-wrap"
     :class="{ favourite: $props.question.favourite }"
     data-test="question-container"
   >
@@ -24,7 +24,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.wrap {
+.question-inline-wrap {
   background-color: var(--box--background-color);
   border: 1px solid var(--box--border-color);
   padding: 8px 8px 10px;

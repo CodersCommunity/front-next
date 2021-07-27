@@ -4,12 +4,13 @@
       <img
         v-if="question.closed"
         data-test="question-closed-icon"
-        src="/images/closed-question.png"
-        alt=""
+        src="https://img.icons8.com/fluent/24/000000/lock-2.png"
+        alt="Pytanie zamknięte"
         class="closed-icon"
       />
       <span>{{ question.title }}</span>
     </h2>
+
     <p class="change">
       {{ whatsChangeText }} <b>{{ question.change.date }}</b> przez
       <InlineUser :user="question.change.user" /> w kategorii
@@ -78,11 +79,6 @@ export default Vue.extend({
   color: var(--question--title--text-color);
   display: flex;
   align-items: center;
-  &:hover {
-    .closed-icon {
-      background-color: var(--question--closed-icon--hover--background-color);
-    }
-  }
 }
 
 .change {
@@ -99,9 +95,8 @@ export default Vue.extend({
   }
 }
 .closed-icon {
-  background-color: var(--question--closed-icon--background-color);
-  border-radius: 18px;
-  padding: 3px;
-  margin: 0 4px;
+  position: relative;
+  top: 2px;
+  margin-right: 5px;
 }
 </style>

@@ -33,7 +33,8 @@ describe('InlineQuestionContent', () => {
     favourite: false,
     closed: false,
   }
-  it('Should have closed-question icon when question is closed', () => {
+
+  it('has closed-question icon when question is closed', () => {
     const wrapper = shallowMount(InlineQuestionContent, {
       propsData: { question: { ...baseQuestionProp, closed: true } },
     })
@@ -42,7 +43,8 @@ describe('InlineQuestionContent', () => {
       wrapper.find('[data-test="question-closed-icon"]').exists()
     ).toBeTruthy()
   })
-  it(' Should not have closed-question icon when question is not closed', () => {
+
+  it('has not closed-question icon when question is not closed', () => {
     const wrapper = shallowMount(InlineQuestionContent, {
       propsData: { question: { ...baseQuestionProp, closed: false } },
     })
