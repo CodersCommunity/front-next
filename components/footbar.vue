@@ -1,14 +1,11 @@
 <template>
-  <footer class="footer-container">
-    <div class="footbar-columns">
+  <footer class="footer">
+    <div class="layout-container footbar-columns">
       <div class="footbar-column-container">
         <h3 class="footbar-section-header">Facebook Pasja Informatyki</h3>
         <ul class="footbar-link-list">
           <li>
-            <a
-              class="facebook-link"
-              href="https://www.facebook.com/pasjainformatykifanpage/"
-            >
+            <a href="https://www.facebook.com/pasjainformatykifanpage/">
               Polub nas na Facebooku
             </a>
           </li>
@@ -19,9 +16,9 @@
         <!--TODO Link to actual pages-->
         <ul class="footbar-link-list">
           <li>
-            <router-link to="/"
-              >Jak Korzystać z Forum? Częste pytania</router-link
-            >
+            <router-link to="/">
+              Jak Korzystać z Forum? Częste pytania
+            </router-link>
           </li>
           <li>
             <router-link to="/">Książki Informatyczne warte uwagi</router-link>
@@ -47,95 +44,87 @@
         <h3 class="footbar-section-header">Polecane miejsca w Sieci</h3>
         <ul class="footbar-link-list">
           <li>
-            <a href="https://github.com/CodersCommunity/" target="_blank"
-              >GitHub CodersCommunity</a
-            >
+            <a href="https://github.com/CodersCommunity/" target="_blank">
+              GitHub CodersCommunity
+            </a>
           </li>
           <li>
             <a
               href="https://www.youtube.com/pasjainformatykitutoriale"
               target="_blank"
-              >Kanał YouTube Pasja informatyki</a
             >
+              Kanał YouTube Pasja informatyki
+            </a>
           </li>
           <li>
-            <a href="http://miroslawzelent.pl" target="_blank"
-              >Blog informatyczny</a
-            >
+            <a href="http://miroslawzelent.pl" target="_blank">
+              Blog informatyczny
+            </a>
           </li>
           <li>
-            <a href="http://egzamin-informatyk.pl/" target="_blank"
-              >Egzaminy EE08 EE09 informatyka</a
-            >
+            <a href="http://egzamin-informatyk.pl/" target="_blank">
+              Egzaminy EE08 EE09 informatyka
+            </a>
           </li>
           <li>
-            <a href="http://egzamin-e13.pl/" target="_blank"
-              >Kwalifikacja E.13</a
-            >
+            <a href="http://egzamin-e13.pl/" target="_blank">
+              Kwalifikacja E.13
+            </a>
           </li>
           <li>
-            <a href="https://www.phpdevs.pl/" target="_blank"
-              >Kurs PHPDevs.pl</a
-            >
+            <a href="https://www.phpdevs.pl/" target="_blank">
+              Kurs PHPDevs.pl
+            </a>
           </li>
           <li>
-            <a href="https://egzamin-ekonomista.pl/" target="_blank"
-              >Egzamin ekonomista AU35 AU36</a
-            >
+            <a href="https://egzamin-ekonomista.pl/" target="_blank">
+              Egzamin ekonomista AU35 AU36
+            </a>
           </li>
         </ul>
       </div>
     </div>
     <div class="acknowledgments-container">
       <div>
-        <a href="https://github.com/CodersCommunity/front-next/issues"
-          >Zgłoś problem</a
-        >
+        <a href="https://github.com/CodersCommunity/front-next/issues">
+          Zgłoś problem
+        </a>
         <a href="https://icons8.com/">Icons8</a>
       </div>
       <div>
-        <a href="https://github.com/CodersCommunity/front-next"
-          >Repozytorium front-end</a
-        >
-        <a href="https://www.question2answer.org/"
-          >Powered by Question2Answer</a
-        >
+        <a href="https://github.com/CodersCommunity/front-next">
+          Repozytorium front-end
+        </a>
+        <a href="https://www.question2answer.org/">
+          Powered by Question2Answer
+        </a>
       </div>
     </div>
   </footer>
 </template>
 
 <style lang="scss" scoped>
-.footer-container {
-  width: 100%;
+.footer {
   margin-top: $gap-width;
-
   color: var(--footbar--text-color);
+  background: var(--footbar--background-color);
   border-top: 1px solid var(--top-bar--border-color);
 }
 
 .footbar-columns {
   display: flex;
   justify-content: center;
-  background: var(--footbar--background-color);
 
   @include mobile {
     flex-direction: column;
   }
 }
 
-.footbar-section-header {
-  padding: 4px 0;
-  border-bottom: 1px solid var(--footbar--heading-underline);
-}
-
 .footbar-link-list {
-  padding-left: 0;
-  list-style: none;
   font-size: size(14);
 
   li {
-    padding: 4px;
+    padding: 4px 0;
   }
 
   a {
@@ -145,12 +134,12 @@
 }
 
 .footbar-column-container {
-  margin: size(20);
-}
+  padding: size(20);
+  width: calc(100% / 3);
 
-.facebook-link {
-  &::before {
-    content: '\1F44D';
+  @include mobile {
+    width: 100%;
+    padding: size(10) size(20);
   }
 }
 
