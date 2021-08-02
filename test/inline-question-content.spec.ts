@@ -36,6 +36,7 @@ describe('InlineQuestionContent', () => {
 
   it('has closed-question icon when question is closed', () => {
     const wrapper = shallowMount(InlineQuestionContent, {
+      stubs: ['router-link'],
       propsData: { question: { ...baseQuestionProp, closed: true } },
     })
 
@@ -46,6 +47,7 @@ describe('InlineQuestionContent', () => {
 
   it('has not closed-question icon when question is not closed', () => {
     const wrapper = shallowMount(InlineQuestionContent, {
+      stubs: ['router-link'],
       propsData: { question: { ...baseQuestionProp, closed: false } },
     })
 

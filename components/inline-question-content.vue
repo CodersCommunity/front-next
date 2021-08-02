@@ -8,7 +8,9 @@
         alt="Pytanie zamknięte"
         class="closed-icon"
       />
-      <span>{{ question.title }}</span>
+      <router-link :to="`/${question.id}/${question.slug}`">
+        <span>{{ question.title }}</span>
+      </router-link>
     </h2>
 
     <p class="change">
@@ -75,7 +77,7 @@ export default Vue.extend({
 .title {
   font-size: size(18);
   font-weight: 700;
-  margin: size(2) 0 size(18);
+  margin: size(2) 0 size(10);
   color: var(--question--title--text-color);
   display: flex;
   align-items: center;
@@ -87,7 +89,7 @@ export default Vue.extend({
 
 .category-link {
   color: var(--question--title--text-color);
-  }
+}
 
 .closed-icon {
   position: relative;
