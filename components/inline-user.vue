@@ -1,9 +1,10 @@
 <template>
-  <span>
+  <span v-if="user">
     <span v-if="user.favourite" class="favourite">★</span>
     <span class="username" :class="usernameStyle">{{ user.name }}</span>
     <span class="points">({{ user.points }} p.)</span>
   </span>
+  <span v-else>niezalogowany</span>
 </template>
 
 <script lang="ts">
@@ -13,8 +14,8 @@ import { InlineUserDto } from '~/services/__generated-api'
 export default Vue.extend({
   props: {
     user: {
-      type: Object as PropType<InlineUserDto>,
-      required: true,
+      type: Object as PropType<InlineUserDto | undefined>,
+      default: undefined,
     },
   },
   computed: {

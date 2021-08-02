@@ -2,6 +2,14 @@ import { mount } from '@vue/test-utils'
 import InlineUser from '@/components/inline-user.vue'
 
 describe('Inline user', () => {
+  it('handles deleted account', () => {
+    const wrapper = mount(InlineUser, {
+      propsData: { user: undefined },
+    })
+
+    expect(wrapper.text()).toContain('niezalogowany')
+  })
+
   describe('user level coloring', () => {
     it('sets username--approved class when user.level is 20', () => {
       const wrapper = mount(InlineUser, {
