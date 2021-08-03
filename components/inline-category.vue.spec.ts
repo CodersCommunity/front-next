@@ -41,4 +41,26 @@ describe('InlineCategory', () => {
 
     expect(wrapper.text()).toContain(category.title)
   })
+
+  it('renders icon if category is favourite', () => {
+    const wrapper = mount(InlineCategory, {
+      stubs: ['router-link'],
+      propsData: {
+        category: { ...category, favourite: true },
+      },
+    })
+
+    expect(wrapper.find('.icon').exists()).toBe(true)
+  })
+
+  it('does not render icon if category is not favourite', () => {
+    const wrapper = mount(InlineCategory, {
+      stubs: ['router-link'],
+      propsData: {
+        category: { ...category, favourite: false },
+      },
+    })
+
+    expect(wrapper.find('.icon').exists()).toBe(false)
+  })
 })
