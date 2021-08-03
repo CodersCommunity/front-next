@@ -42,7 +42,7 @@ export default Vue.extend({
 }
 
 .sidebar {
-  width: 25%;
+  width: calc(25% - #{$gap-width});
 
   @include mobile {
     width: 100%;
