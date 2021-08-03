@@ -19,8 +19,10 @@ export default Vue.extend({
     },
   },
   computed: {
-    usernameStyle() {
-      switch (this.$props.user.level) {
+    usernameStyle(): string {
+      if (!this.user) return ''
+
+      switch (this.user.level) {
         case 0:
           return ''
         case 10:
