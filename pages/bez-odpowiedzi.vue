@@ -16,9 +16,18 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { VueConstructor } from 'vue'
+import { InlineQuestionDto, PaginationDto } from '~/services/__generated-api'
 
-export default Vue.extend({
+export default (
+  Vue as VueConstructor<
+    Vue & {
+      questions: InlineQuestionDto[]
+      pagination: PaginationDto
+      page: number
+    }
+  >
+).extend({
   layout: 'sidebar',
   async asyncData({ $httpService, route }) {
     /**

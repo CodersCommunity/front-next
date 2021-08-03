@@ -11,9 +11,16 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { VueConstructor } from 'vue'
+import { QuestionDto } from '~/services/__generated-api'
 
-export default Vue.extend({
+export default (
+  Vue as VueConstructor<
+    Vue & {
+      question: QuestionDto
+    }
+  >
+).extend({
   layout: 'sidebar',
   async asyncData({ route, $httpService, error }) {
     const questionId = parseInt(route.params.questionId)
@@ -40,7 +47,6 @@ export default Vue.extend({
   },
   head() {
     return {
-      // @ts-ignore
       title: this.question.title,
     }
   },

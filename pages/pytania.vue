@@ -21,12 +21,26 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { VueConstructor } from 'vue'
 import { sortOptionsMap } from '@/constants/index'
 import { invertObject } from '~/assets/ts/invert-object'
-import { CategoryDto } from '~/services/__generated-api'
+import {
+  CategoryDto,
+  InlineQuestionDto,
+  PaginationDto,
+} from '~/services/__generated-api'
 
-export default Vue.extend({
+export default (
+  Vue as VueConstructor<
+    Vue & {
+      page: number
+      tag: string | undefined
+      categoryName: string | undefined
+      questions: InlineQuestionDto[]
+      pagination: PaginationDto
+    }
+  >
+).extend({
   key: (to) => to.fullPath,
   layout: 'sidebar',
   async asyncData({ route, $httpService, app, error }) {
