@@ -48,5 +48,8 @@ jobs:
       - name: Run linter 👀
         run: npm run lint
 
+      - name: Check types in vue templates
+        run: npm run check-templates
+
       - name: Run tests 🧪
         run: npm run test
