@@ -1,14 +1,6 @@
 <template>
   <span>
-    <img
-      v-if="category.favourite"
-      src="https://img.icons8.com/fluency/16/000000/star.png"
-      alt="Twoja ulubiona kategoria"
-      title="Twoja ulubiona kategoria"
-      class="icon"
-      width="16"
-      height="16"
-    />
+    <IconFavourite v-if="category.favourite" alt="Twoja ulubiona kategoria" />
     <router-link
       class="inline-category-link"
       :to="{ name: 'pytania', query: { kategoria: category.path } }"
@@ -30,12 +22,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style lang="scss" scoped>
-.icon {
-  position: relative;
-  top: 2px;
-  left: 1px;
-  cursor: help;
-}
-</style>

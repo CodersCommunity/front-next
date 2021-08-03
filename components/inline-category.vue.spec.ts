@@ -1,6 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import InlineCategory from '@/components/inline-category.vue'
+import IconFavourite from '@/components/icon-favourite.vue'
 import { CategoryDto } from '~/services/__generated-api'
 
 const category: CategoryDto = {
@@ -50,7 +51,7 @@ describe('InlineCategory', () => {
       },
     })
 
-    expect(wrapper.find('.icon').exists()).toBe(true)
+    expect(wrapper.findComponent(IconFavourite).exists()).toBe(true)
   })
 
   it('does not render icon if category is not favourite', () => {
@@ -61,6 +62,6 @@ describe('InlineCategory', () => {
       },
     })
 
-    expect(wrapper.find('.icon').exists()).toBe(false)
+    expect(wrapper.findComponent(IconFavourite).exists()).toBe(false)
   })
 })

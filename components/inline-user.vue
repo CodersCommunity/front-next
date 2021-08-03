@@ -1,6 +1,6 @@
 <template>
   <span v-if="user">
-    <span v-if="user.favourite" class="favourite">★</span>
+    <IconFavourite v-if="user.favourite" alt="Twój ulubiony użytkownik" />
     <span class="username" :class="usernameStyle">{{ user.name }}</span>
     <span class="points">({{ user.points }} p.)</span>
   </span>
