@@ -57,6 +57,7 @@ export default Vue.extend({
   }
 
   &--no-answers {
+    color: var(--question--answers-number--no-answers--text-color);
     background-color: var(
       --question--answers-number--no-answers--background-color
     );

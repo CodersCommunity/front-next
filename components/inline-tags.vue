@@ -24,7 +24,7 @@ export default Vue.extend({
 .inline-tags {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 5px 0;
   display: flex;
   flex-wrap: wrap;
 }

@@ -5,17 +5,17 @@ import { InlineQuestionDto } from '~/services/__generated-api'
 describe('InlineQuestion', () => {
   const baseQuestionProp: InlineQuestionDto = {
     id: 1,
-    title: 'aaa',
-    slug: 'aaa',
+    title: 'Question title',
+    slug: 'question-slug',
     answers: 22,
     votes: 38,
     views: 68,
     hasBestAnswer: false,
-    tags: [{ name: 'bbb', favourite: false }],
+    tags: [{ name: 'tag-name', favourite: false }],
     category: {
       id: 1,
-      title: 'ccc',
-      path: 'path-to-ccc',
+      title: 'Category title',
+      path: 'category-slug',
       favourite: false,
     },
     change: {
@@ -23,32 +23,58 @@ describe('InlineQuestion', () => {
       date: new Date().toDateString(),
       user: {
         id: 1,
-        title: 'asdad',
+        title: 'User title',
         favourite: false,
         level: 0,
-        name: 'Mirek',
+        name: 'User name',
         points: 10000,
       },
     },
     favourite: false,
     closed: false,
   }
-  it('Should have class favourite when question is marked as favourite', () => {
+
+  it('has closed-question icon when question is closed', () => {
     const wrapper = shallowMount(InlineQuestion, {
+      stubs: ['router-link'],
+      propsData: { question: { ...baseQuestionProp, closed: true } },
+    })
+
+    expect(
+      wrapper.find('[data-test="question-closed-icon"]').exists()
+    ).toBeTruthy()
+  })
+
+  it('has not closed-question icon when question is not closed', () => {
+    const wrapper = shallowMount(InlineQuestion, {
+      stubs: ['router-link'],
+      propsData: { question: { ...baseQuestionProp, closed: false } },
+    })
+
+    expect(
+      wrapper.find('[data-test="question-closed-icon"]').exists()
+    ).toBeFalsy()
+  })
+
+  it('has closed-question icon when question is closed', () => {
+    const wrapper = shallowMount(InlineQuestion, {
+      stubs: ['router-link'],
       propsData: { question: { ...baseQuestionProp, favourite: true } },
     })
 
     expect(
-      wrapper.find('[data-test="question-container"]').classes()
-    ).toContain('favourite')
+      wrapper.find('[data-test="question-favourite-icon"]').exists()
+    ).toBeTruthy()
   })
-  it('Should not have class favourite when question is not marked as favourite', () => {
+
+  it('has not closed-question icon when question is not closed', () => {
     const wrapper = shallowMount(InlineQuestion, {
+      stubs: ['router-link'],
       propsData: { question: { ...baseQuestionProp, favourite: false } },
     })
 
     expect(
-      wrapper.find('[data-test="question-container"]').classes()
-    ).not.toContain('favourite')
+      wrapper.find('[data-test="question-favourite-icon"]').exists()
+    ).toBeFalsy()
   })
 })
