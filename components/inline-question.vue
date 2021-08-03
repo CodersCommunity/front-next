@@ -70,7 +70,7 @@ export default Vue.extend({
 .title {
   font-size: size(18);
   font-weight: 700;
-  margin: size(2) 0 size(10);
+  margin: size(2) 0 size(6);
   display: flex;
   align-items: center;
 
