@@ -9,4 +9,15 @@
  * pluralization(2, 'tag', 'tagi', 'tagów') // 2 tagi
  * pluralization(10, 'pytanie', 'pytania', 'pytań') // 10 pytań
  */
-export function pluralization() {}
+export function pluralization(
+  number: number,
+  form1: string,
+  form2: string,
+  form3: string
+): string {
+  number = Math.abs(number)
+  if (number === 0) return form3
+  if (number === 1) return form1
+  if (number < 5) return form2
+  return form3
+}

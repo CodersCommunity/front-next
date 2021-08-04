@@ -24,6 +24,7 @@ export default {
   plugins: [
     '~/plugins/vee-validate.ts',
     '~/plugins/pagination.ts',
+    '~/plugins/pluralization.ts',
     '~/services/http.service.ts',
   ],
 

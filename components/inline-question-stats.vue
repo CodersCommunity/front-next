@@ -3,7 +3,7 @@
     <div class="boxes-wrap">
       <div class="box box--votes">
         <div class="number">{{ question.votes }}</div>
-        głosów
+        {{ $pluralization(question.votes, 'głos', 'głosy', 'głosów') }}
       </div>
       <div
         class="box box--answers"
@@ -13,10 +13,20 @@
         }"
       >
         <div class="number">{{ question.answers }}</div>
-        odpowiedzi
+        {{
+          $pluralization(
+            question.answers,
+            'odpowiedź',
+            'odpowiedzi',
+            'odpowiedzi'
+          )
+        }}
       </div>
     </div>
-    <div class="views">{{ question.views }} wizyt</div>
+    <div class="views">
+      {{ question.views }}
+      {{ $pluralization(question.views, 'wizyta', 'wizyty', 'wizyt') }}
+    </div>
   </div>
 </template>
 
