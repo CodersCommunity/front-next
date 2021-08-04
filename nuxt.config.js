@@ -25,6 +25,7 @@ export default {
     '~/plugins/vee-validate.ts',
     '~/plugins/pagination.ts',
     '~/plugins/pluralization.ts',
+    '~/plugins/stringify-date.ts',
     '~/services/http.service.ts',
   ],
 

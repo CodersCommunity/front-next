@@ -1,7 +1,7 @@
 <template>
   <span class="inline-change">
     {{ whatsChangeText }}
-    <b>{{ change.date }}</b>
+    <b>{{ $stringifyDate(change.date) }}</b>
     <span v-if="category"> w <InlineCategory :category="category" /> </span>
     przez
     <InlineUser :user="change.user" />
