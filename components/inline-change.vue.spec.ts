@@ -33,6 +33,7 @@ describe('inline-change', () => {
   it('shows type of change', () => {
     const wrapper = shallowMount(InlineChange, {
       propsData: { change },
+      mocks: { $stringifyDate: () => {} },
     })
 
     expect(wrapper.text()).toContain('pytanie zadane')
@@ -41,6 +42,7 @@ describe('inline-change', () => {
   it('shows category if provided', () => {
     const wrapper = shallowMount(InlineChange, {
       propsData: { change, category },
+      mocks: { $stringifyDate: () => {} },
     })
 
     expect(wrapper.findComponent(InlineCategory).exists()).toBeTruthy()
@@ -49,6 +51,7 @@ describe('inline-change', () => {
   it('does not show category if not provided', () => {
     const wrapper = shallowMount(InlineChange, {
       propsData: { change },
+      mocks: { $stringifyDate: () => {} },
     })
 
     expect(wrapper.findComponent(InlineCategory).exists()).toBeFalsy()
@@ -57,6 +60,7 @@ describe('inline-change', () => {
   it('shows user', () => {
     const wrapper = shallowMount(InlineChange, {
       propsData: { change },
+      mocks: { $stringifyDate: () => {} },
     })
 
     expect(wrapper.findComponent(InlineUser).exists()).toBeTruthy()
