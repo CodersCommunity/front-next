@@ -58,12 +58,7 @@ export default Vue.extend({
     disableVoting(): boolean {
       const userId = this.$accessor.currentUser?.id
       const authorId = this.post.author?.id
-
-      if (userId && authorId) {
-        return userId === authorId
-      } else {
-        return false
-      }
+      return !userId || userId === authorId
     },
   },
 })
