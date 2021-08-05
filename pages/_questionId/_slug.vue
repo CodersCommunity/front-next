@@ -5,7 +5,7 @@
     </TitleContainer>
 
     <Box>
-      <Question :question="question" />
+      <Post :post="question" />
     </Box>
   </div>
 </template>
