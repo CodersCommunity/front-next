@@ -28,8 +28,13 @@
             <span class="visually-hidden">Oddaj głos w dół na to pytanie</span>
           </button>
         </div>
-        <div>
-          <div class="number">{{ votes }}</div>
+        <div class="vote__content">
+          <div
+            class="number"
+            :class="{ 'number--small': Math.abs(votes) > 99 }"
+          >
+            {{ votes }}
+          </div>
           {{ $pluralization(votes, 'głos', 'głosy', 'głosów') }}
         </div>
       </div>
@@ -44,7 +49,9 @@
           'box--best-answer': hasBestAnswer,
         }"
       >
-        <div class="number">{{ answers }}</div>
+        <div class="number" :class="{ 'number--small': answers > 99 }">
+          {{ answers }}
+        </div>
         {{ $pluralization(answers, 'odpowiedź', 'odpowiedzi', 'odpowiedzi') }}
       </div>
     </div>
@@ -147,14 +154,22 @@ export default Vue.extend({
 .number {
   font-size: size(22);
   line-height: size(43);
+
+  &--small {
+    font-size: size(16);
+  }
 }
 
 .vote {
   display: flex;
 
   &__buttons {
-    width: 26px;
-    margin-top: 10px;
+    width: size(25);
+    margin-top: size(10);
+  }
+
+  .vote__content {
+    width: calc(100% - #{size(30)});
   }
 
   &__button {
@@ -162,7 +177,7 @@ export default Vue.extend({
     border: none;
     background: none;
 
-    padding: 5px;
+    padding: size(5);
 
     transition: all 0.2s;
 
