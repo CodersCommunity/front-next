@@ -28,7 +28,7 @@ export default Vue.extend({
   margin: 1px;
   color: var(--tag--text-color);
   background-color: var(--tag--background-color);
-  padding: 4px 10px;
+  padding: 3px 9px;
   font-size: size(11);
   text-decoration: none;
 }
