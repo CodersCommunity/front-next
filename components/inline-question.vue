@@ -1,6 +1,12 @@
 <template>
   <article class="inline-question">
-    <InlineQuestionStats class="stats" :question="question" />
+    <PostStats
+      class="stats"
+      :votes="question.votes"
+      :views="question.views"
+      :answers="question.answers"
+      :has-best-answer="question.hasBestAnswer"
+    />
     <div class="content">
       <h2 class="title">
         <img
