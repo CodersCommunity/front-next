@@ -69,6 +69,28 @@ export default Vue.extend({
   },
   mounted() {
     Prism.highlightAllUnder(this.$el)
+    const codeBlocks = [...this.$el.querySelectorAll('pre')]
+
+    codeBlocks.forEach((codeBlock) => {
+      const baseWidth = codeBlock.offsetWidth
+      const scrollWidth = codeBlock.scrollWidth
+
+      if (scrollWidth <= baseWidth) return
+
+      codeBlock.style.width = `${baseWidth}px`
+      codeBlock.style.overflowX = 'scroll'
+
+      codeBlock.addEventListener('mouseenter', () => {
+        const offset = codeBlock.getBoundingClientRect()
+        const widthToScreenBorder = window.innerWidth - offset.left - 40
+        const newWidth = Math.min(scrollWidth + 1, widthToScreenBorder)
+        codeBlock.style.width = `${newWidth}px`
+      })
+
+      codeBlock.addEventListener('mouseleave', () => {
+        codeBlock.style.width = `${baseWidth}px`
+      })
+    })
   },
 })
 </script>
@@ -77,6 +99,7 @@ export default Vue.extend({
 .content ::v-deep {
   pre {
     border: 1px solid var(--box--border-color);
+    transition: width 0.3s;
   }
 }
 </style>
