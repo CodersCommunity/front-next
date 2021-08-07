@@ -12,6 +12,7 @@
       >
         <div v-if="showVoteButtons" class="vote__buttons">
           <button
+            data-test="vote-up-button"
             class="vote__button vote__button--up"
             title="Oddaj głos w górę"
             @click="voteUp"
@@ -20,6 +21,7 @@
             <span class="visually-hidden">Oddaj głos w górę na to pytanie</span>
           </button>
           <button
+            data-test="vote-down-button"
             class="vote__button vote__button--down"
             title="Oddaj głos w dół"
             @click="voteDown"
@@ -30,6 +32,7 @@
         </div>
         <div class="vote__content">
           <div
+            data-test="vote-number"
             class="number"
             :class="{ 'number--small': Math.abs(votes) > 99 }"
           >
@@ -49,7 +52,11 @@
           'box--best-answer': hasBestAnswer,
         }"
       >
-        <div class="number" :class="{ 'number--small': answers > 99 }">
+        <div
+          data-test="answers-number"
+          class="number"
+          :class="{ 'number--small': answers > 99 }"
+        >
           {{ answers }}
         </div>
         {{ $pluralization(answers, 'odpowiedź', 'odpowiedzi', 'odpowiedzi') }}
