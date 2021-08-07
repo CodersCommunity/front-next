@@ -23,8 +23,8 @@
     <InlineTags v-if="post.tags" :tags="post.tags" />
 
     <div class="buttons">
-      <CustomButton color="success">Odpowiedz</CustomButton>
-      <CustomButton>Skomentuj</CustomButton>
+      <BaseButton color="success">Odpowiedz</BaseButton>
+      <BaseButton>Skomentuj</BaseButton>
     </div>
   </div>
 </template>
