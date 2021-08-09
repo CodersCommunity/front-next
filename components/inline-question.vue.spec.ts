@@ -11,6 +11,7 @@ describe('InlineQuestion', () => {
     votes: 38,
     views: 68,
     hasBestAnswer: false,
+    userVote: 1,
     tags: [{ name: 'tag-name', favourite: false }],
     category: {
       id: 1,

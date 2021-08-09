@@ -2,11 +2,11 @@
   <div class="post-container">
     <PostStats
       class="votes"
-      :user-vote="x"
+      :user-vote="userVote"
       :views="post.views"
       :votes="post.votes"
       :disable-voting="disableVoting"
-      @user-vote="(vote) => (x = vote)"
+      @user-vote="(vote) => (userVote = vote)"
     />
 
     <div class="change">
@@ -42,8 +42,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      // TODO
-      x: 0,
+      userVote: this.post.userVote,
     }
   },
   computed: {
