@@ -4,9 +4,9 @@
       class="votes"
       :user-vote="userVote"
       :views="post.views"
-      :votes="post.votes"
+      :votes="votes"
       :disable-voting="disableVoting"
-      @user-vote="(vote) => (userVote = vote)"
+      @user-vote="vote"
     />
 
     <div class="change">
@@ -42,7 +42,9 @@ export default Vue.extend({
   },
   data() {
     return {
+      isUserVoting: false,
       userVote: this.post.userVote,
+      votes: this.post.votes,
     }
   },
   computed: {
@@ -58,6 +60,21 @@ export default Vue.extend({
       const userId = this.$accessor.currentUser?.id
       const authorId = this.post.author?.id
       return !userId || userId === authorId
+    },
+  },
+  methods: {
+    async vote(vote: -1 | 0 | 1) {
+      if (this.isUserVoting) return
+      this.isUserVoting = true
+
+      const { userVote, votes } = await this.$httpService.questions.vote(
+        `${this.post.id}`,
+        { vote }
+      )
+
+      this.userVote = userVote
+      this.votes = votes
+      this.isUserVoting = false
     },
   },
 })
