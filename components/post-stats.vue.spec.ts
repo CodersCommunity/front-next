@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils'
-import PostStats from '@/components/post-stats.vue'
+import PostStats from '~/components/post-stats.vue'
 
 describe('PostStats', () => {
   it('does not render votes buttons if voting is disabled', () => {
     const wrapper = mount(PostStats, {
-      propsData: { votes: 0, disableVotes: true },
+      propsData: { votesCount: 0, disableVotes: true },
       mocks: { $pluralization: () => {} },
     })
 
@@ -13,41 +13,41 @@ describe('PostStats', () => {
 
   describe('renders number', () => {
     it('votes', () => {
-      const votes = 5436112354
+      const votesCount = 5436112354
       const wrapper = mount(PostStats, {
-        propsData: { votes },
+        propsData: { votesCount },
         mocks: { $pluralization: () => {} },
       })
 
-      expect(wrapper.text()).toContain(`${votes}`)
+      expect(wrapper.text()).toContain(`${votesCount}`)
     })
 
     it('answers', () => {
-      const answers = 5436112354
+      const answersCount = 5436112354
       const wrapper = mount(PostStats, {
-        propsData: { answers, votes: 0 },
+        propsData: { answersCount, votesCount: 0 },
         mocks: { $pluralization: () => {} },
       })
 
-      expect(wrapper.text()).toContain(`${answers}`)
+      expect(wrapper.text()).toContain(`${answersCount}`)
     })
 
     it('views', () => {
-      const views = 5436112354
+      const viewsCount = 5436112354
       const wrapper = mount(PostStats, {
-        propsData: { views, votes: 0 },
+        propsData: { viewsCount, votesCount: 0 },
         mocks: { $pluralization: () => {} },
       })
 
-      expect(wrapper.text()).toContain(`${views}`)
+      expect(wrapper.text()).toContain(`${viewsCount}`)
     })
   })
 
   describe('renders small number', () => {
     it('if votes number is longer than 2 chars', () => {
-      const votes = -5436112354
+      const votesCount = -5436112354
       const wrapper = mount(PostStats, {
-        propsData: { votes },
+        propsData: { votesCount },
         mocks: { $pluralization: () => {} },
       })
 
@@ -57,9 +57,9 @@ describe('PostStats', () => {
     })
 
     it('if answers number is longer than 2 chars', () => {
-      const answers = 5436112354
+      const answersCount = 5436112354
       const wrapper = mount(PostStats, {
-        propsData: { answers, votes: 0 },
+        propsData: { answersCount, votesCount: 0 },
         mocks: { $pluralization: () => {} },
       })
 
@@ -73,9 +73,9 @@ describe('PostStats', () => {
     it('if there is a best answer', () => {
       const wrapper = mount(PostStats, {
         propsData: {
-          votes: 0,
           hasBestAnswer: true,
-          answers: 1,
+          answersCount: 1,
+          votesCount: 0,
         },
         mocks: { $pluralization: () => {} },
       })
@@ -87,7 +87,7 @@ describe('PostStats', () => {
 
     it('if there is no answers', () => {
       const wrapper = mount(PostStats, {
-        propsData: { votes: 0, answers: 0 },
+        propsData: { votesCount: 0, answersCount: 0 },
         mocks: { $pluralization: () => {} },
       })
 
@@ -100,7 +100,7 @@ describe('PostStats', () => {
   describe('emits', () => {
     it('vote up if user has not voted yet and clicks vote up', async () => {
       const wrapper = mount(PostStats, {
-        propsData: { votes: 0, userVote: 0 },
+        propsData: { votesCount: 0, userVote: 0 },
         mocks: { $pluralization: () => {} },
       })
 
@@ -110,7 +110,7 @@ describe('PostStats', () => {
 
     it('remove vote up if user has voted up and clicks vote up again', async () => {
       const wrapper = mount(PostStats, {
-        propsData: { votes: 0, userVote: 1 },
+        propsData: { votesCount: 0, userVote: 1 },
         mocks: { $pluralization: () => {} },
       })
 
@@ -120,7 +120,7 @@ describe('PostStats', () => {
 
     it('vote down if user has not voted yet and clicks vote down', async () => {
       const wrapper = mount(PostStats, {
-        propsData: { votes: 0, userVote: 0 },
+        propsData: { votesCount: 0, userVote: 0 },
         mocks: { $pluralization: () => {} },
       })
 
@@ -130,7 +130,7 @@ describe('PostStats', () => {
 
     it('remove vote down if user has voted down and clicks vote down again', async () => {
       const wrapper = mount(PostStats, {
-        propsData: { votes: 0, userVote: 1 },
+        propsData: { votesCount: 0, userVote: 1 },
         mocks: { $pluralization: () => {} },
       })
 

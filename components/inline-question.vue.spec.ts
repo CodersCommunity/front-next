@@ -7,9 +7,9 @@ describe('InlineQuestion', () => {
     id: 1,
     title: 'Question title',
     slug: 'question-slug',
-    answers: 22,
-    votes: 38,
-    views: 68,
+    answersCount: 22,
+    votesCount: 38,
+    viewsCount: 68,
     hasBestAnswer: false,
     userVote: 1,
     tags: [{ name: 'tag-name', favourite: false }],
@@ -33,6 +33,19 @@ describe('InlineQuestion', () => {
     },
     favourite: false,
     closed: false,
+    answers: [],
+    author: {
+      favourite: false,
+      id: 1,
+      level: 10,
+      name: 'author-name',
+      points: 100,
+      title: '',
+    },
+    content: '',
+    contentType: 'text',
+    createDate: '',
+    isHidden: false,
   }
 
   it('has closed-question icon when question is closed', () => {

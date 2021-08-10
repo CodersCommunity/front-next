@@ -1,11 +1,15 @@
 <template>
-  <div class="post-container">
+  <div
+    class="post-container"
+    :class="{ 'post-container--comment': postType === 'comment' }"
+  >
     <PostStats
+      v-if="postType !== 'comment'"
       class="votes"
       :user-vote="userVote"
-      :views="post.views"
-      :votes="votes"
-      :disable-voting="disableVoting"
+      :views-count="post.viewsCount"
+      :votes-count="votesCount"
+      :disable-voting="isCurrentUserTheAuthorOfThisPost"
       @user-vote="vote"
     />
 
@@ -22,21 +26,37 @@
 
     <InlineTags v-if="post.tags" :tags="post.tags" />
 
-    <div class="buttons">
-      <BaseButton color="success">Odpowiedz</BaseButton>
-      <BaseButton>Skomentuj</BaseButton>
+    <PostButtons
+      :is-comment="postType === 'comment'"
+      :is-question="postType === 'question'"
+      :can-report="isCurrentUserTheAuthorOfThisPost"
+    />
+
+    <div v-if="post.comments && post.comments.length > 0" class="comments">
+      <Box v-for="comment in post.comments" :key="comment.id" dark>
+        <Post :post="comment" post-type="comment" />
+      </Box>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { InlineQuestionDto, QuestionDto } from '~/services/__generated-api'
+import {
+  AnswerDto,
+  CommentDto,
+  InlineQuestionDto,
+  QuestionDto,
+} from '~/services/__generated-api'
 
 export default Vue.extend({
   props: {
     post: {
-      type: Object as PropType<QuestionDto>,
+      type: Object as PropType<QuestionDto & AnswerDto & CommentDto>,
+      required: true,
+    },
+    postType: {
+      type: String as PropType<'question' | 'answer' | 'comment'>,
       required: true,
     },
   },
@@ -44,22 +64,21 @@ export default Vue.extend({
     return {
       isUserVoting: false,
       userVote: this.post.userVote,
-      votes: this.post.votes,
+      votesCount: this.post.votesCount,
     }
   },
   computed: {
     typeOfPost(): InlineQuestionDto['change'] {
       return {
-        type: 'question_created',
-        // @ts-ignore TODO
+        type: `${this.postType}_created`,
         date: this.post.createDate,
         user: this.post.author,
       }
     },
-    disableVoting(): boolean {
+    isCurrentUserTheAuthorOfThisPost(): boolean {
       const userId = this.$accessor.currentUser?.id
       const authorId = this.post.author?.id
-      return !userId || userId === authorId
+      return !!userId && userId === authorId
     },
   },
   methods: {
@@ -68,12 +87,12 @@ export default Vue.extend({
       this.isUserVoting = true
 
       const { userVote, votes } = await this.$httpService.questions.vote(
-        `${this.post.id}`,
+        this.post.id,
         { vote }
       )
 
       this.userVote = userVote
-      this.votes = votes
+      this.votesCount = votes
       this.isUserVoting = false
     },
   },
@@ -84,6 +103,11 @@ export default Vue.extend({
 .post-container {
   position: relative;
   padding: size(5) size(40) size(10) size(85);
+
+  &--comment {
+    padding: size(5) 0;
+    font-size: size(14);
+  }
 }
 
 .change {
@@ -97,15 +121,13 @@ export default Vue.extend({
   margin-bottom: 20px;
 }
 
-.buttons {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--question--divider--color);
-}
-
 .votes {
   position: absolute;
   top: 10px;
   left: 0;
+}
+
+.comments {
+  margin-top: size(20);
 }
 </style>

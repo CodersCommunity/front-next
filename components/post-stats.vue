@@ -34,40 +34,42 @@
           <div
             data-test="vote-number"
             class="number"
-            :class="{ 'number--small': Math.abs(votes) > 99 }"
+            :class="{ 'number--small': Math.abs(votesCount) > 99 }"
           >
-            {{ votes }}
+            {{ votesCount }}
           </div>
-          {{ $pluralization(votes, 'głos', 'głosy', 'głosów') }}
+          {{ $pluralization(votesCount, 'głos', 'głosy', 'głosów') }}
         </div>
       </div>
       <!-- e/o Vote box -->
 
       <!-- Answers box -->
       <div
-        v-if="answers !== null"
+        v-if="answersCount !== null"
         class="box box--answers"
         :class="{
-          'box--no-answers': answers === 0,
+          'box--no-answers': answersCount === 0,
           'box--best-answer': hasBestAnswer,
         }"
       >
         <div
           data-test="answers-number"
           class="number"
-          :class="{ 'number--small': answers > 99 }"
+          :class="{ 'number--small': answersCount > 99 }"
         >
-          {{ answers }}
+          {{ answersCount }}
         </div>
-        {{ $pluralization(answers, 'odpowiedź', 'odpowiedzi', 'odpowiedzi') }}
+        {{
+          $pluralization(answersCount, 'odpowiedź', 'odpowiedzi', 'odpowiedzi')
+        }}
       </div>
     </div>
     <!-- e/o Answers box -->
 
     <!-- Views info -->
-    <div v-if="views !== null" class="views">
-      {{ views }}
-      {{ $pluralization(views, 'wizyta', 'wizyty', 'wizyt') }}
+    <div v-if="viewsCount !== null" class="views">
+      {{ viewsCount }}
+      {{ $pluralization(viewsCount, 'wizyta', 'wizyty', 'wizyt') }}
     </div>
     <!-- e/o Views info -->
   </div>
@@ -78,15 +80,15 @@ import Vue from 'vue'
 
 export default Vue.extend({
   props: {
-    votes: {
+    votesCount: {
       type: Number,
       required: true,
     },
-    answers: {
+    answersCount: {
       type: Number,
       default: null,
     },
-    views: {
+    viewsCount: {
       type: Number,
       default: null,
     },

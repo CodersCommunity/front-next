@@ -5,8 +5,30 @@
     </TitleContainer>
 
     <Box>
-      <Post :post="question" />
+      <Post :post="question" post-type="question" />
     </Box>
+
+    <TitleContainer v-if="question.answersCount > 0">
+      <h2>
+        {{ question.answersCount }}
+        {{
+          $pluralization(
+            question.answersCount,
+            'Odpowiedź',
+            'Odpowiedzi',
+            'Odpowiedzi'
+          )
+        }}
+      </h2>
+    </TitleContainer>
+
+    <Box v-for="answer in question.answers" :key="answer.id">
+      <Post :post="answer" post-type="answer" />
+    </Box>
+
+    <TitleContainer v-if="question.answersCount > 0">
+      <h2>Podobne pytania</h2>
+    </TitleContainer>
   </div>
 </template>
 

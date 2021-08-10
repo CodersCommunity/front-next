@@ -1,8 +1,20 @@
 <template>
-  <div class="box">
+  <div class="box" :class="{ 'box--dark': dark }">
     <slot />
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  props: {
+    dark: {
+      type: Boolean,
+      default: false,
+    },
+  },
+})
+</script>
 
 <style lang="scss" scoped>
 .box {
@@ -10,5 +22,9 @@
   padding: size(8) size(20);
   background-color: var(--box--background-color);
   border: 1px solid var(--box--border-color);
+
+  &--dark {
+    background-color: var(--box--dark--background-color);
+  }
 }
 </style>

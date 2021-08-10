@@ -9,6 +9,7 @@ import Vue from 'vue'
 
 enum Color {
   Primary = 'primary',
+  Secondary = 'secondary',
   Info = 'info',
   Success = 'success',
   Warning = 'warning',
@@ -23,9 +24,10 @@ export default Vue.extend({
     },
     color: {
       type: String,
-      default: Color.Primary,
+      default: Color.Secondary,
       validator(value) {
         return [
+          Color.Secondary,
           Color.Info,
           Color.Success,
           Color.Warning,
@@ -34,15 +36,21 @@ export default Vue.extend({
         ].includes(value as Color)
       },
     },
+    small: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     buttonCssClasses(): Object {
       return {
         'button--primary': this.color === Color.Primary,
+        'button--secondary': this.color === Color.Secondary,
         'button--info': this.color === Color.Info,
         'button--success': this.color === Color.Success,
         'button--warning': this.color === Color.Warning,
         'button--error': this.color === Color.Error,
+        'button--small': this.small,
       }
     },
   },
@@ -54,10 +62,16 @@ export default Vue.extend({
   cursor: pointer;
   color: var(--button--text-color);
   border: none;
-  padding: size(10) size(15);
-  font-size: size(14);
+  padding: size(0) size(10);
+  line-height: size(32);
+  font-size: size(13);
 
   transition: background-color 0.15s;
+
+  &--small {
+    line-height: size(28);
+    padding: size(0) size(8);
+  }
 
   &--primary {
     background-color: var(--button--primary--background-color);
@@ -65,6 +79,16 @@ export default Vue.extend({
     &:hover,
     &:focus {
       background-color: var(--button--primary--hover--background-color);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--button--secondary--background-color);
+    color: var(--button--secondary--text-color);
+
+    &:hover,
+    &:focus {
+      background-color: var(--button--secondary--hover--background-color);
     }
   }
 

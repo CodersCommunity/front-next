@@ -2,9 +2,9 @@
   <article class="inline-question">
     <PostStats
       class="stats"
-      :votes="question.votes"
-      :views="question.views"
-      :answers="question.answers"
+      :votes-count="question.votesCount"
+      :views-count="question.viewsCount"
+      :answers-count="question.answersCount"
       :has-best-answer="question.hasBestAnswer"
     />
     <div class="content">
