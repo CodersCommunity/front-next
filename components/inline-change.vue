@@ -1,10 +1,16 @@
 <template>
   <span class="inline-change">
     {{ whatsChangeText }}
-    <b>{{ $stringifyDate(change.date) }}</b>
-    <span v-if="category"> w <InlineCategory :category="category" /> </span>
-    przez
-    <InlineUser :user="change.user" />
+
+    <time
+      class="time"
+      :datetime="change.date"
+      v-text="$stringifyDate(change.date)"
+    />
+
+    <span v-if="category">w <InlineCategory :category="category" /></span>
+
+    przez <InlineUser :user="change.user" />
   </span>
 </template>
 
@@ -65,5 +71,9 @@ export default Vue.extend({
   ::v-deep a {
     color: var(--question--change--anchors--text-color);
   }
+}
+
+.time {
+  font-weight: bold;
 }
 </style>

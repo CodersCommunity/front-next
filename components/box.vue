@@ -1,13 +1,17 @@
 <template>
-  <div class="box" :class="{ 'box--dark': dark }">
+  <component :is="tag" class="box" :class="{ 'box--dark': dark }">
     <slot />
-  </div>
+  </component>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
   props: {
+    tag: {
+      type: String,
+      default: 'div',
+    },
     dark: {
       type: Boolean,
       default: false,

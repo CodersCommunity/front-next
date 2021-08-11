@@ -32,16 +32,23 @@
       :can-report="isCurrentUserTheAuthorOfThisPost"
     />
 
-    <div v-if="post.comments && post.comments.length > 0" class="comments">
-      <Box
-        v-for="comment in post.comments"
-        :id="`c${comment.id}`"
-        :key="comment.id"
-        dark
-      >
-        <Post :post="comment" post-type="comment_created" />
-      </Box>
-    </div>
+    <section
+      v-if="post.comments && post.comments.length > 0"
+      :id="`komentarze-post-${post.id}`"
+      class="comments"
+    >
+      <ol class="reset-list">
+        <Box
+          v-for="comment in post.comments"
+          :id="`c${comment.id}`"
+          :key="comment.id"
+          tag="li"
+          dark
+        >
+          <Post :post="comment" post-type="comment_created" />
+        </Box>
+      </ol>
+    </section>
   </div>
 </template>
 

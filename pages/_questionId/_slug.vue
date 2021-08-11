@@ -1,39 +1,46 @@
 <template>
-  <div>
+  <article :id="`q${question.id}`">
     <TitleContainer>
       <h1>{{ question.title }}</h1>
     </TitleContainer>
 
-    <Box :id="`q${question.id}`">
+    <Box>
       <Post :post="question" post-type="question_created" />
     </Box>
 
-    <TitleContainer v-if="question.answersCount > 0">
-      <h2>
-        {{ question.answersCount }}
-        {{
-          $pluralization(
-            question.answersCount,
-            'Odpowiedź',
-            'Odpowiedzi',
-            'Odpowiedzi'
-          )
-        }}
-      </h2>
-    </TitleContainer>
+    <section v-if="question.answers.length > 0" id="odpowiedzi">
+      <TitleContainer>
+        <h2>
+          {{ question.answersCount }}
+          {{
+            $pluralization(
+              question.answersCount,
+              'Odpowiedź',
+              'Odpowiedzi',
+              'Odpowiedzi'
+            )
+          }}
+        </h2>
+      </TitleContainer>
 
-    <Box
-      v-for="answer in question.answers"
-      :id="`a${answer.id}`"
-      :key="answer.id"
-    >
-      <Post :post="answer" post-type="answer_created" />
-    </Box>
+      <ol class="reset-list">
+        <Box
+          v-for="answer in question.answers"
+          :id="`a${answer.id}`"
+          :key="answer.id"
+          tag="li"
+        >
+          <Post :post="answer" post-type="answer_created" />
+        </Box>
+      </ol>
+    </section>
 
-    <TitleContainer v-if="question.answersCount > 0">
-      <h2>Podobne pytania</h2>
-    </TitleContainer>
-  </div>
+    <section id="podobne-pytania">
+      <TitleContainer v-if="question.answersCount > 0">
+        <h2>Podobne pytania</h2>
+      </TitleContainer>
+    </section>
+  </article>
 </template>
 
 <script lang="ts">
