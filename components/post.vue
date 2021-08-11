@@ -14,8 +14,8 @@
     />
 
     <div class="change">
-      <InlineChange :change="typeOfPost" /><br />
-      <InlineChange :change="post.change" />
+      <InlineChange :change="creationInfo" /><br />
+      <InlineChange v-if="showChangeInfo" :change="post.change" />
     </div>
 
     <PostContent
@@ -47,12 +47,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {
-  AnswerDto,
-  CommentDto,
-  InlineQuestionDto,
-  QuestionDto,
-} from '~/services/__generated-api'
+import { AnswerDto, CommentDto, QuestionDto } from '~/services/__generated-api'
 
 export default Vue.extend({
   props: {
@@ -61,7 +56,7 @@ export default Vue.extend({
       required: true,
     },
     postType: {
-      type: String as PropType<InlineQuestionDto['change']['type']>,
+      type: String as PropType<QuestionDto['change']['type']>,
       required: true,
     },
   },
@@ -73,7 +68,7 @@ export default Vue.extend({
     }
   },
   computed: {
-    typeOfPost(): InlineQuestionDto['change'] {
+    creationInfo(): QuestionDto['change'] {
       return {
         type: this.postType,
         date: this.post.createDate,
@@ -84,6 +79,15 @@ export default Vue.extend({
       const userId = this.$accessor.currentUser?.id
       const authorId = this.post.author?.id
       return !!userId && userId === authorId
+    },
+    showChangeInfo(): boolean {
+      const createTypes: Array<QuestionDto['change']['type']> = [
+        'question_created',
+        'answer_created',
+        'comment_created',
+      ]
+
+      return this.post.change && !createTypes.includes(this.post.change.type)
     },
   },
   methods: {
