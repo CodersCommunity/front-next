@@ -4,7 +4,7 @@
       <h1>{{ question.title }}</h1>
     </TitleContainer>
 
-    <Box>
+    <Box :id="`q${question.id}`">
       <Post :post="question" post-type="question_created" />
     </Box>
 
@@ -22,7 +22,11 @@
       </h2>
     </TitleContainer>
 
-    <Box v-for="answer in question.answers" :key="answer.id">
+    <Box
+      v-for="answer in question.answers"
+      :id="`a${answer.id}`"
+      :key="answer.id"
+    >
       <Post :post="answer" post-type="answer_created" />
     </Box>
 

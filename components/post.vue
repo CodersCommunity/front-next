@@ -33,8 +33,13 @@
     />
 
     <div v-if="post.comments && post.comments.length > 0" class="comments">
-      <Box v-for="comment in post.comments" :key="comment.id" dark>
-        <Post :post="comment" post-type="comment" />
+      <Box
+        v-for="comment in post.comments"
+        :id="`c${comment.id}`"
+        :key="comment.id"
+        dark
+      >
+        <Post :post="comment" post-type="comment_created" />
       </Box>
     </div>
   </div>
