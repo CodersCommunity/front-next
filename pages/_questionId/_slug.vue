@@ -5,7 +5,7 @@
     </TitleContainer>
 
     <Box>
-      <Post :post="question" post-type="question" />
+      <Post :post="question" post-type="question_created" />
     </Box>
 
     <TitleContainer v-if="question.answersCount > 0">
@@ -23,7 +23,7 @@
     </TitleContainer>
 
     <Box v-for="answer in question.answers" :key="answer.id">
-      <Post :post="answer" post-type="answer" />
+      <Post :post="answer" post-type="answer_created" />
     </Box>
 
     <TitleContainer v-if="question.answersCount > 0">

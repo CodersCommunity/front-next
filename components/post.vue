@@ -1,10 +1,10 @@
 <template>
   <div
     class="post-container"
-    :class="{ 'post-container--comment': postType === 'comment' }"
+    :class="{ 'post-container--comment': postType === 'comment_created' }"
   >
     <PostStats
-      v-if="postType !== 'comment'"
+      v-if="postType !== 'comment_created'"
       class="votes"
       :user-vote="userVote"
       :views-count="post.viewsCount"
@@ -27,8 +27,8 @@
     <InlineTags v-if="post.tags" :tags="post.tags" />
 
     <PostButtons
-      :is-comment="postType === 'comment'"
-      :is-question="postType === 'question'"
+      :is-comment="postType === 'comment_created'"
+      :is-question="postType === 'question_created'"
       :can-report="isCurrentUserTheAuthorOfThisPost"
     />
 
@@ -56,7 +56,7 @@ export default Vue.extend({
       required: true,
     },
     postType: {
-      type: String as PropType<'question' | 'answer' | 'comment'>,
+      type: String as PropType<InlineQuestionDto['change']['type']>,
       required: true,
     },
   },
@@ -70,7 +70,7 @@ export default Vue.extend({
   computed: {
     typeOfPost(): InlineQuestionDto['change'] {
       return {
-        type: `${this.postType}_created`,
+        type: this.postType,
         date: this.post.createDate,
         user: this.post.author,
       }
